@@ -1,0 +1,1805 @@
+/* Reset */
+html, body, div, p, ul, li, img, span, a, h1, h2, h3, h4 { margin:0; padding:0; }
+html { font-family:Arial, Helvetica, sans-serif; font-size:12px; }
+
+a img
+{
+	border:0;
+	text-decoration:none;
+	padding:0;
+	margin:0;
+}
+
+p
+{
+	color: #333333;
+	line-height:16px;
+	margin-top:10px;
+	margin-bottom:10px;
+	text-align:justify;
+}
+
+h1
+{
+	color: #d55b37;
+	font-family:Georgia, Arial, Helvetica, sans-serif;
+	font-size:22px;
+	font-weight:bold;
+	font-style:italic;
+	margin:15px 0px;
+}
+h1 span
+{
+	font-size:18px;
+	font-weight:normal;
+}
+
+h2
+{
+	color: #000000;
+	font-family:Georgia, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	margin:10px 0px;
+}
+
+h3
+{
+	color: #000000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	margin:10px 0px;
+}
+
+a
+{
+	color: #000000;
+	text-decoration:none;
+}
+a:hover
+{
+	text-decoration:underline;
+}
+
+ul
+{
+	margin-left: 0px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+li{
+	list-style:none;
+	background-image:url('../images/puce-co-voiturage-ecologique.png');
+	background-position:left 4px;
+	background-repeat:no-repeat;
+	line-height:18px;
+	padding-left:18px;
+	text-align:justify;
+}
+
+
+
+
+/************************* Common *************************/
+body
+{
+	background-image:url('../images/bckg.jpg');
+	background-repeat:repeat;
+	background-position:top;
+	color:#333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+
+div#container
+{
+	margin:0px auto;
+	position:relative;
+	text-align:left;
+	width:1000px;
+}
+
+*|*:-moz-any-link:focus {
+  outline: none;
+}
+
+.clear
+{
+	clear:both;
+}
+
+.submit_search
+{
+	border:none;
+	background-color:none;
+	background:url('../images/btn-vert-covoiturage.png') no-repeat top left;
+	font-family:Georgia, Arial;
+	font-style:italic;
+	font-weight:bold;
+	height:39px;
+	padding:3px 0px 15px 10px;
+	width:115px;
+}
+.submit_search:hover
+{
+	background:url('../images/btn-vert-covoiturage-hover.png') no-repeat top left;
+	cursor:pointer;
+}
+
+.big_btn_white
+{
+	background:url('../images/btn-blanc-grd-fac-by-car.png') no-repeat top left;
+	display:block;
+	font-family:Georgia, Arial;
+	font-style:italic;
+	font-weight:bold;
+	height:31px;
+	_height:39px;
+	margin:5px 0px 0px 30px;
+	padding:8px 0px 0px 20px;
+	width:156px;
+	_width:176px;
+}
+.big_btn_white:hover
+{
+	background-position:left -41px;
+	text-decoration:none;
+}
+
+.big_btn_green
+{
+	border:none;
+	background-color:none;
+	background:url('../images/btn-vert-grd-universite-mlv.png') no-repeat top left;
+	display:block;
+	font-family:Georgia, Arial;
+	font-style:italic;
+	font-weight:bold;
+	height:33px;
+	_height:42px;
+	margin:15px 0px 10px 50px;
+	padding:9px 0px 0px 23px;
+	width:184px;
+	_width:207px;
+}
+.big_btn_green:hover
+{
+	background:url('../images/btn-vert-grd-universite-mlv-hover.png') no-repeat top left;
+	text-decoration:none;
+}
+
+p.more
+{
+	background:url('../images/fleche-more-covoiturage.jpg') no-repeat  right 2px;
+	margin-top:8px;
+	padding:0px 34px 0px 0px;
+	text-align:right;
+}
+
+a.little_btn
+{
+	background:url('../images/btn-trajet-covoiturage-pt.jpg') no-repeat top left;
+	display:block;
+	height:17px;
+	_height:29px;
+	padding:6px 5px;
+	text-align:center;
+	width:68px;
+	_width:78px;
+}
+a.little_btn:hover
+{
+	background:url('../images/btn-trajet-covoiturage-pt-hover.jpg') no-repeat top left;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+a.big_btn
+{
+	background:url('../images/btn-trajet-covoiturage-grd.jpg') no-repeat top left;
+	display:block;
+	height:17px;
+	_height:29px;
+	padding:6px 4px;
+	text-align:center;
+	width:108px;
+	_width:116px;
+}
+a.big_btn:hover
+{
+	background:url('../images/btn-trajet-covoiturage-grd-hover.jpg') no-repeat top left;
+	font-weight:bold;
+	text-decoration:none;
+}
+.bckg_grey
+{
+	background-color:#dfd8c6;
+}
+
+.girl
+{
+	background:url('../images/icon-fille-voiture.png') no-repeat top right;
+	padding:4px 27px 0px 0px;
+}
+.boy
+{
+	background:url('../images/icon-garcon-voiture.png') no-repeat right 3px;
+	padding:7px 27px 0px 0px;
+}
+p.note_search
+{
+	color:#666666;
+	font-size:9px;
+}
+
+.fieldWrapper p
+{
+	margin:10px 0px 0px 0px;
+}
+
+.fieldWrapper p.comm
+{
+	color:#666666;
+	font-size:10px;
+	margin:0px 0px 5px 113px;
+}
+.error
+{
+	background:url('../images/partage-voiture-attention.png') no-repeat top left;
+	color:#D55B37;
+	font-size:10px;
+	margin-left:8px;
+	padding:5px 0px 2px 25px;
+}
+.required
+{
+	color:#D55B37;
+}
+.p_required
+{
+	font-size:11px;
+	color:#D55B37;
+}
+.fieldWrapper .checkbox_form
+{
+	margin-left:110px;
+}
+
+.submit
+{
+	margin-top:20px;
+}
+
+.puce
+{
+	background:url('../images/puce-co-voiturage-ecologique.png') no-repeat left 2px;
+	padding-left:18px;
+}
+/************************* Header *************************/
+
+#header
+{
+	height:91px;
+	position:relative;
+}
+
+/* Logo */
+
+a#link_logo
+{
+	position:relative;
+	display:block;
+	float:left;
+	top:0px;
+	background-image:url('../images/logo-covoiturage-fac-by-car.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	height:91px;
+	width:312px;
+	text-decoration:none;
+}
+
+a#link_logo span
+{
+	visibility:hidden;
+}
+
+a#link_logo span h1
+{
+	margin:0px;
+}
+
+/* Link boutons */
+#like_buttons
+{	
+	position:absolute;
+	right:21px;
+	top:5px;
+}
+#like_buttons a
+{
+	margin-left:5px;
+}
+
+/* Menu */
+#menu 
+{ 
+	background-image:url('../images/bckg-menu-fac-by-car.png');
+	background-repeat:no-repeat;
+	background-position:top;
+	float:left;
+	height:39px;
+	margin-top:52px;
+	width:665px;
+} 
+
+#menu ul
+{ 
+	margin:7px 0px 0px 65px;
+}
+
+#menu li
+{ 
+	background-image:none;
+	list-style:none;
+	float:left;
+	color:#000000;
+	margin:4px 2px;
+	font-weight: bold;
+	font-size: 12px;
+	padding-left: 25px;
+} 
+#menu li a
+{ 
+	color:#000000;
+	font-family:Georgia, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	font-style:italic;
+	text-decoration:none;
+	padding-bottom:5px;
+} 
+#menu li a:hover
+{ 
+	color:#d55b37;
+} 
+
+
+/************************* Content *************************/
+/* Left */
+#left 
+{
+	background-image:url('../images/covoiturage-lignes-bckg.png');
+	background-repeat:no-repeat;
+	background-position:top right;
+	float:left;
+	padding-top:10px;
+	width:311px;
+}
+
+#left #registration
+{
+	padding:20px 0px 20px 44px;
+}
+#left #btn_registration
+{
+	background-image:url('../images/fleche-covoiturage-fac-by-car-right.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	display:block;
+	font-family:Georgia, Arial;
+	font-size:18px;
+	font-style:italic;
+	font-weight:bold;
+	height:40px;
+	_height:76px;
+	padding:18px 52px;
+	text-decoration:none;
+	width:106px;
+	_width:210px;
+}
+#left #btn_registration:hover
+{
+	background-position:left -76px;
+	text-decoration:none;
+}
+
+#left #btn_logout
+{
+	background-image:url('../images/fleche-covoiturage-fac-by-car-left.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	display:block;
+	font-family:Georgia, Arial;
+	font-size:18px;
+	font-style:italic;
+	font-weight:bold;
+	height:40px;
+	_height:76px;
+	padding:18px 32px;
+	text-decoration:none;
+	width:146px;
+	_width:210px;
+}
+#left #btn_logout:hover
+{
+	background-position:left -76px;
+	text-decoration:none;
+}
+
+#left #form_login
+{
+	background-image:url('../images/bckg-connexion-covoiturage-umlv.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	height:125px;
+	_height:155px;
+	margin:10px 0px;
+	padding:15px 25px 10px 25px;
+	width:237px;
+	_width:282px;
+}
+
+#left #form_login p
+{
+	color:#000000;
+}
+#left #form_login label
+{
+	display:block;
+	float:left;
+	padding-top:4px;
+	width:82px;
+}
+#left #form_login input#username, #left #form_login input#password
+{
+	width:130px;
+}
+#left #form_login #link_login 
+{
+	float:left;
+	margin-right:7px;
+	margin-top:5px;
+}
+#left #form_login #link_login a
+{
+	color:#FFFFFF;
+	font-size:11px;
+}
+#left #form_login .submit_login
+{
+	border:none;
+	background-color:none;
+	background:url('../images/btn-blanc-umlv.png') no-repeat top left;
+	font-family:Georgia, Arial;
+	font-style:italic;
+	font-weight:bold;
+	height:40px;
+	padding:3px 0px 15px 10px;
+	width:117px;
+}
+#left #form_login .submit_login:hover
+{
+	background:url('../images/btn-blanc-umlv-hover.png') no-repeat top left;
+	cursor:pointer;
+}
+
+/*Block user*/
+#block_user_left h2
+{
+	margin:0px;
+}
+#block_user_left p 
+{
+	margin:5px 0px;
+}
+#block_user_left p a 
+{
+	background:url('../images/block-user-co-voiturage.jpg') no-repeat;
+	padding:2px 0px 2px 25px;
+}
+#block_user_left p a.route_block_user
+{
+	background-position:top left;
+}
+#block_user_left p a.mess_block_user
+{
+	background-position:left -21px;
+}
+#block_user_left p a.demand_block_user
+{
+	background-position:left -42px;
+}
+
+/*Help*/
+#left #help
+{
+	background-image:url('../images/bckg-aide-voiture.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	height:156px;
+	_height:191px;
+	margin:20px 0px 0px 0px;
+	padding:10px 50px 25px 110px;
+	width:151px;
+	_width:311px;
+}
+#left #help li a
+{
+	color:#333333;
+	font-size:14px;
+	font-weight:bold;
+	line-height:14px;
+	padding-bottom:5px;
+	text-decoration:none;
+}
+#left #help li a:hover
+{
+	text-decoration:underline;
+}
+#left #help li 
+{
+	line-height:18px;
+	background-position:left 6px;
+	padding-top:4px;
+	padding-bottom:5px;
+	text-align:left;
+}
+
+/* Right */
+#right 
+{
+	float:left;
+	width:689px;
+}
+
+#right_content 
+{
+	background-color:#f2efe8;
+	padding:5px 20px 20px 20px;
+	position: relative;
+}
+
+
+
+/* Footer */
+#footer 
+{ 
+	background-image:url('../images/bckg-footer-fac-by-car.jpg');
+	background-repeat:no-repeat;
+	background-position:top left;
+	height:30px;
+	margin:0px 0px 10px 70px;
+	padding:7px 0px 0px 20px;
+	width:595px;
+}
+
+#footer a 
+{ 
+	font-size:11px;
+	padding:0px 2px;
+	text-decoration:none;
+}
+#footer a:hover
+{ 
+	color:#000000;
+	text-decoration:underline;
+}
+
+
+/******************* Page d'accueil ********************/
+
+/* form recherche */
+#form_search
+{
+	margin-bottom:30px;
+}
+#form_search div 
+{
+	float:left;
+	margin-right:20px;
+	width:140px;
+}
+
+#form_search input#city_d, #form_search input#city_a , #form_search input.date
+{
+	width:130px;
+}
+
+.date{
+	background-image:url(../images/calendrier-fac-by-car.gif);
+	background-position:right;
+	background-repeat:no-repeat;
+	border:1px solid #AAAAAA;
+	height:18px;
+	width:130px;
+}
+
+
+/* plus fac by car */
+.block_home
+{
+	float:left;
+	margin:0px 40px 30px 0px;
+	width:170px;
+}
+.rencontres
+{
+	float:left;
+	margin:0px 0px 30px 0px;
+	width:200px;
+}
+.block_home h2, .rencontres h2
+{
+	margin-top:0px;
+}
+.block_home img, .rencontres img
+{
+	float:left;
+	margin:0px 10px 10px 0px;
+}
+
+/* derniers trajets */
+#last_route
+{
+	float:left;
+	margin:0px 22px 0px 0px;
+	width:310px;
+}
+#last_minute_route
+{
+	float:left;
+	width:310px;
+}
+#last_route p a, #last_minute_route p a
+{
+	padding:3px 0px 0px 26px;
+}
+.passenger
+{
+	background:url('../images/passager-co-voiturage.png') no-repeat top left;
+}
+.driver
+{
+	background:url('../images/conducteur-co-voiturage.png') no-repeat top left;
+}
+	
+#last_route span, #last_minute_route span
+{
+	color:#000000;
+	font-weight:bold;
+	font-size:13px;
+}
+
+#last_route p.more a, #last_minute_route p.more a
+{
+	background:none;
+	color:#666666;
+}
+
+/*Auto-complétion*/
+ul.ui-autocomplete 
+{
+	background-color:#FFFFFF;
+	border:1px solid #cccccc;
+	padding:5px 0px;
+	width:180px;
+}
+ul.ui-autocomplete li
+{
+	background-image:none;
+	line-height:20px;
+	padding:0px 5px;
+}
+ul.ui-autocomplete li:hover
+{
+	background-color:#e0d9c7;
+}
+ul.ui-autocomplete li a
+{
+	display:block;
+	width:170px;
+}
+ul.ui-autocomplete li a:hover
+{
+	cursor:pointer;
+	text-decoration:none;
+}
+
+
+/************* Page recherche **************/
+/* Formulaire "Affiner la recherche" */
+
+a#link_refine_search
+{
+	padding:1px 20px 5px 0px;
+}
+a.link_refine_search_off
+{
+	background:url('../images/affiner-off-umlv.jpg') no-repeat top right;
+}
+a.link_refine_search_on
+{
+	background:url('../images/affiner-on-umlv.jpg') no-repeat top right;
+}
+
+#refine_search 
+{
+	background:url('../images/fond-affiner-co-voiturage.jpg') no-repeat top left;
+	height:100px;
+	_height:110px;
+	padding:5px;
+	width:639px;
+	_width:649px;
+	display:none;
+}
+#refine_search *
+{
+	font-size:11px;
+}
+#refine_search p
+{
+	margin:0px;
+	padding: 5px 0px;
+	border-bottom:1px solid #FFFFFF;
+}
+#refine_search .form_refine_left
+{
+	float:left;
+	margin-right:35px;
+	width:165px;
+}
+#refine_search .form_refine_right
+{
+	float:left;
+	width:190px;
+}
+#refine_search input#price_mini, #refine_search input#price_maxi
+{
+	width:20px;
+}
+
+#refine_search .submit_search
+{
+	font-size:14px;
+	margin:20px 0px 0px 70px;
+}
+
+/* Formulaire "trier par" */
+form#order
+{
+	margin:20px 0px 10px 0px;
+	text-align:center;
+}
+
+/* Résultat de la recherche */
+/*.results_search
+{
+	float:left;
+	margin-bottom:20px;
+}
+.results_search_driver
+{
+	border-right:1px solid #cccccc;
+	width:322px;
+}
+.results_search_passenger
+{
+	width:302px;
+	margin-left:22px;
+}
+.results_search_driver h2
+{
+	background:url('../images/universite-marne-la-vallee-bckg-titre-d.jpg') no-repeat top left;
+}
+.results_search_passenger h2
+{
+	background:url('../images/universite-marne-la-vallee-bckg-titre-p.jpg') no-repeat top left;
+}
+.results_search h2
+{
+	height:16px;
+	_height:38px;
+	font-family:Arial;
+	font-size:12px;
+	margin-top:0px;
+	padding:12px 10px 10px 33px;
+	width:258px;
+	_width:301px;
+}*/
+.result
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') no-repeat bottom left;
+	padding:10px 0px 20px 0px;
+	width:240px;
+}
+.result h3
+{
+	float:left;
+	font-size:14px;
+	width:170px;
+}
+
+.result h3 a
+{
+	color:#d55b37;
+}
+
+.result .user_search
+{
+	float:left;
+	width:68px; 
+}
+.result .user_search a
+{
+	font-size:11px;
+	text-decoration:underline;
+}
+.result .user_search a:hover
+{
+	text-decoration:none;
+}
+
+.result .route_search
+{
+	float:left;
+	width:230px;
+}
+.result .route_search h3
+{
+	padding-left:10px;
+	margin:5px 0px;
+	width:220px;
+	_width:230px;
+}
+.result .route_search a
+{
+	color:#000000;
+}
+.result .route_search p
+{
+	color:#000000;
+	margin:0px;
+	padding:10px;
+	text-align:center;
+}
+.result .route_search div
+{
+	margin-bottom:5px;
+}
+.result .route_search div.infos_route_search p
+{
+	color:#666666;
+	font-size:13px;
+	padding-bottom:7px;
+	text-align:left;
+}
+.result .route_search div.infos_route_search p span
+{
+	color:#000000;
+}
+
+.result .route_search div.nb_place_search
+{
+	float:left;
+	margin-right:5px;
+	width:110px;
+}
+.result .route_search div.nb_place_search span
+{
+	font-size:28px;
+	font-weight:bold;
+}
+
+.result .route_search div.price_search
+{
+	float:left;
+	width:115px;
+}
+.result .route_search div.price_search span
+{
+	font-size:28px;
+	font-weight:bold;
+	margin:0px 15px;
+}
+
+.result a.little_btn
+{
+	float:left;
+	margin-right:35px;
+}
+.result a.big_btn
+{
+	float:left;
+}
+
+
+
+/************* Page profil **************/
+/* bloc user */
+#block_user
+{
+	float:left;
+	width:332px;
+}
+#block_user #top_block_user
+{
+	background:url('../images/haut-user-fac-by-car.jpg') no-repeat top left;
+	height:7px;
+	width:332px;
+}
+#block_user #bottom_block_user
+{
+	background:url('../images/bas-user-fac-by-car.jpg') no-repeat top left;
+	height:7px;
+	width:332px;
+}
+#block_user #content_block_user
+{
+	background:url('../images/fond-user-fac-by-car.gif') repeat-y top left;
+	padding:5px 10px 5px 10px;
+	width:312px;
+	_width:332px;
+}
+
+#block_user .pict_block_user
+{
+	border:3px solid #dfd8c6;
+	float:left;
+	margin:10px 10px 0px 0px;
+	width:105px;
+	margin-bottom:15px
+}
+#block_user .pict_block_user img
+{
+	width:105px;
+}
+
+#block_user #info_block_user
+{
+	padding-left:15px;
+}
+#block_user #info_block_user h1
+{
+	margin:0px 0px 5px 0px;
+	display:inline;
+	padding-top: 0;
+}
+#block_user #info_block_user h2
+{
+	margin:5px 0px;
+}
+#block_user #info_block_user p
+{
+	margin:1px 0px;
+}
+#block_user #info_block_user .note_search
+{
+	margin:3px 0px;
+}
+.pref_block_user
+{
+	background:url('../images/preference-co-voiturage.png') no-repeat;
+	float:left;
+	height:33px;
+	margin-right:5px;
+	width:36px;
+}
+.is_smoker
+{
+	background-position:-80px top;
+}
+.is_no_smoker
+{
+	background-position:-80px -34px;
+}
+.is_talker
+{
+	background-position:-1px top;
+}
+.is_no_talker
+{
+	background-position:-1px -34px;
+}
+.big_bag
+{
+	background-position:-43px top;
+}
+.no_big_bag
+{
+	background-position:-43px -34px;
+}
+.music
+{
+	background-position:-120px top;
+}
+.no_music
+{
+	background-position:-120px -34px;
+}
+.music_block_user
+{
+	color: #666666;
+    font-size: 9px;
+	line-height:12px;
+	margin:1px 0px;
+}
+
+#block_user #info_block_car
+{
+	padding:10px 0px;
+}
+#block_user #info_block_car p
+{
+	margin:1px 0px;
+}
+#block_user .pict_block_car
+{
+	border:3px solid #dfd8c6;
+	float:left;
+	margin:2px 10px 0px 0px;
+	width:70px;
+}
+#block_user .pict_block_car img
+{
+	width:70px;
+}
+
+.btn_add
+{
+	background:url('../images/add-voiture-co-voiturage.jpg') no-repeat top left;
+	padding-left:20px;
+	color:#3d8a61;
+	margin-right:50px;
+}
+.btn_edit
+{
+	background:url('../images/fleche-voiture-universite-umlv.jpg') no-repeat top left;
+	padding-left:20px;
+	color:#3d8a61;
+}
+
+/*Block message*/
+#block_message_profile
+{
+	float:left;
+	margin-left:20px;
+	width:297px;
+}
+
+#block_message_profile h2 
+{
+	margin-top:-5px;
+	margin-bottom:5px;
+	padding:4px 0px;
+	position:relative;
+}
+#block_message_profile h2 a
+{
+	margin-left:168px;
+	margin-top:-6px;
+	position:absolute;
+}
+#block_message_profile h2 a:hover
+{
+	text-decoration:none;
+}
+#block_message_profile .block_mess_titre
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') no-repeat bottom right;
+	padding-bottom:1px;
+}
+.block_mess_is_read
+{
+	background:url('../images/fac-by-car-icon-message.jpg') no-repeat right 7px;
+}
+.block_mess_is_no_read
+{
+	background:url('../images/fac-by-car-icon-message.jpg') no-repeat right -18px;
+}
+
+/*Block Route*/
+#route_profile
+{
+	float:left;
+	margin:0px 0px 0px 20px;
+	width:297px;
+}
+#route_profile .driver, #route_profile .passenger
+{
+	background-position:left 10px;
+}
+#route_profile h2
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') no-repeat bottom right;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding:10px 0px 10px 27px;
+	position:relative;
+}
+#route_profile .block_route_profile
+{
+	background-color:#dfd8c6;
+	border:1px solid #c8c2b2;
+	margin:5px 0px;
+	padding:5px;
+}
+#route_profile .block_route_profile h4, #route_profile .block_route_profile p
+{
+	font-size:11px;
+}
+#route_profile .block_route_profile p
+{
+	margin:0px;
+}
+#route_profile .block_route_profile .block_route_profile_infos
+{
+	float:left;
+	width:250px;
+}
+#route_profile .block_route_profile .block_route_profile_nb_passenger
+{
+	background-color:#FFFFFF;
+	float:left;
+	font-size:11px;
+	padding:8px 5px;
+}
+#route_profile .block_route_profile .block_route_profile_nb_passenger
+{
+	font-size:12px;
+	font-weight:bold;
+}
+#route_profile   ul
+{
+	margin:0px;
+}
+#route_profile  li a
+{
+	font-size:11px;
+}
+/*Block commentaire*/
+
+#comm_form
+{
+	background:url('../images/fond-affiner-co-voiturage.jpg') repeat-y top left;
+	height:110px;
+	position:relative;
+}
+#comm_form div
+{
+	float:left;
+	width:500px;
+}
+#comment_form label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: right;
+    width: 90px;
+}
+#comment_form .comm, #comment_form .checkbox_form
+{
+	margin-left:90px;
+}
+#comm_form .submit_search
+{
+	margin-top:60px;
+}
+#field_content .error
+{
+	position:absolute;
+	display:none;
+	right: 90px;
+    top: 15px;
+}
+
+#titre_comm_profil
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') repeat-x bottom left;
+	padding-bottom:10px;
+}
+#block_comments 
+{
+	margin:20px 0px 0px 0px;
+}
+#block_comments div.block_comment
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') repeat-x bottom left;
+	margin:10px 0px;
+}
+
+#block_comments div.block_comment div.block_comm
+{
+	background:url('../images/co-voiturage-umlv-comment.png') no-repeat top left;
+	padding:0px 0px 5px 60px;
+}
+#block_comments div.block_comment .block_comment_title  
+{
+	color:#999999;
+	float:left;
+	margin-top:0px;
+	width:510px;
+}
+
+#block_comments div.block_comment .block_comment_title a 
+{
+	font-family:Georgia;
+	font-weight:bold;
+}
+#block_comments div.block_comment .block_comment_title  span
+{
+	color:#666666;
+}
+#block_comments div.block_comment .block_comment_note
+{
+	float:left;
+	margin-top:0px;
+}
+#block_comments div.block_comment .block_comment_note img
+{
+	margin-right:0px;
+}
+#block_comments div.block_comment .block_comment_content
+{
+	clear:both;
+}
+
+
+/********* register **********/
+#register_form label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: right;
+    width: 110px;
+}
+#register_form .submit_search
+{
+	margin-left:110px;
+}
+#register_form .p_required
+{
+	margin-left:110px;
+}
+
+/********* Edit profil *********/
+#profile_form label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: right;
+    width: 160px;
+}
+#profile_form .comm, #profile_form .checkbox_form
+{
+	margin-left:163px;
+}
+
+/********* Message *********/
+.message
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') repeat-x bottom left;
+	padding:8px 0px;
+}
+.mess_no_read 
+{
+	background-color:#FFFFFF;
+}
+.mess_no_read a.subject_mess
+{
+	font-family:Georgia;
+	font-weight:bold;
+	font-size:14px;
+}
+.mess_read a, .mess_no_read a
+{
+	font-family:Georgia;
+	font-size:14px;
+}
+.message p span
+{
+	color:#999999;
+}
+.suppr_mess
+{
+	background:url('../images/suppr-covoiturage-umlv.png') no-repeat top left;
+	display:block;
+	float:left;
+	height:15px;
+	width:17px;
+}
+.suppr_mess:hover
+{
+	background-position:left -16px;
+}
+.subject_mess
+{
+	float:left;
+	width:632px;
+}
+
+#btn_messages
+{
+	position:absolute;
+	right:10px;
+	top:25px;
+}
+#btn_messages a
+{
+	background:url('../images/btn-messagerie-fac-by-car.jpg') repeat-x;
+	display:block;
+	float:left;
+	height:19px;
+	_height:24px;
+	margin-right:10px;
+	padding-top:5px;
+}
+#btn_messages a.btn_message_send
+{
+	background-position:-137px top;
+	padding-left:35px;
+	width:111px;
+	_width:146px;
+}
+#btn_messages a.btn_message_send:hover
+{
+	background-position:-137px -25px;
+}
+#btn_messages a.btn_message_new
+{
+	background-position:-284px top;
+	padding-left:25px;
+	width:111px;
+	_width:136px;
+}
+#btn_messages a.btn_message_new:hover
+{
+	background-position:-284px -25px;
+}
+#btn_messages a.btn_message_received
+{
+	background-position:0px top;
+	padding-left:25px;
+	width:101px;
+	_width:126px;
+}
+#btn_messages a.btn_message_received:hover
+{
+	background-position:0px -25px;
+}
+#btn_messages a.btn_message_answer
+{
+	background-position:-420px top;
+	padding-left:25px;
+	width:68px;
+	_width:93px;
+}
+#btn_messages a.btn_message_answer:hover
+{
+	background-position:-420px -25px;
+}
+
+#btn_messages a.suppr_mess
+{
+	background:url('../images/suppr-covoiturage-umlv.png') no-repeat top left;
+	display:block;
+	float:left;
+	height:15px;
+	width:17px;
+	padding-top:0px;
+	margin-top:4px;
+}
+#btn_messages .suppr_mess:hover
+{
+	background-position:left -16px;
+}
+
+
+#mess_form label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 1px;
+    text-align: right;
+    width: 75px;
+}
+#mess_form .submit_search
+{
+	margin-left:75px;
+}
+
+
+#read_message p span
+{
+	color:#999999;
+}
+
+#read_message #top_read_message
+{
+	background:url('../images/read-message-covoiturage-fac-by-car-h.jpg') no-repeat top left;
+	height:11px;
+	width:649px;
+}
+#read_message #bottom_read_message
+{
+	background:url('../images/read-message-covoiturage-fac-by-car-b.jpg') no-repeat top left;
+	height:10px;
+	width:649px;
+}
+#read_message #content_read_message 
+{
+	background:url('../images/read-message-covoiturage-fac-by-car.jpg') repeat-y top left;
+	padding:10px;
+}
+
+
+/*********** faq *********/
+.block_faq
+{
+	margin:10px 0px;
+	padding:2px 0px;
+}
+.block_faq h2
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') repeat-x bottom left;
+	padding:0px 0px 10px 0px;
+}
+
+/********* Contact *********/
+#contact_form label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: right;
+    width: 65px;
+}
+#contact_form .comm, #contact_form .checkbox_form, #contact_form .submit_search, #contact_form .p_required
+{
+	margin-left:65px;
+}
+
+
+/********* Ajouter un trajet *********/
+#form_route .big_btn_white
+{
+	background-position:left -41px;
+	margin:5px 0px 10px 0px;
+}
+#form_route .big_btn_white:hover
+{
+	text-decoration:underline;
+}
+
+#form_route .submit
+{
+	text-align:right;
+}
+
+/*Etape 1*/
+#form_route .form_route_left 
+{
+    float: left;
+	margin-bottom:20px;
+    width: 270px;
+}
+#form_route .form_route_left2
+{
+    float: left;
+	margin-bottom:20px;
+    width: 330px;
+}
+#form_route .form_route_left2 input
+{
+    width: 220px;
+}
+#form_route .form_route_left label, #form_route .form_route_left2 label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: left;
+    width: 90px;
+}
+#form_route .form_route_left .comm, #form_route .form_route_left2 .comm
+{
+	margin-left:90px;
+}
+
+#form_route_driver, #form_route_daily 
+{
+	height:25px;
+	margin-bottom:10px;
+}
+#form_route_driver #id_is_driver_0
+{
+	margin-left:23px;
+}
+#form_route_driver #id_is_driver_1
+{
+	margin-left:11px;
+}
+#form_route_driver ul, #form_route_daily ul
+{
+	margin:0px;
+}
+#form_route_driver p, #form_route_daily  p
+{
+	float:left;
+	margin-top:1px;
+}
+
+#form_route_driver li, #form_route_daily  li
+{
+	background-image:none;
+	float:left;
+}
+
+/*Etape 2*/
+#form_route2 .submit
+{
+	text-align:right;
+}
+#form_route_time_daily 
+{
+    float: left;
+    width: 250px;
+}
+#form_route_time_validity 
+{
+    float: left;
+    width: 350px;
+}
+#form_route_time_daily label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: left;
+    width: 60px;
+}
+#form_route_time_daily input
+{
+    width: 60px;
+}
+#form_route_time_validity label
+{
+	display: block;
+    float: left;
+    margin-right: 4px;
+    padding-top: 3px;
+    text-align: left;
+    width: 150px;
+}
+#form_route2 .fieldWrapper input
+{
+    width: 60px;
+}
+#form_route2 #date
+{
+    width: 100px;
+}
+
+/*Etape 3*/
+#form_route3 .submit
+{
+	text-align:right;
+}
+#form_route3 #id_price, #form_route3 #id_nb_passengers
+{
+	width:40px;
+}
+
+
+/*Summury trajet */
+#block_route
+{
+	background-color:#dfd8c6;
+	border:1px solid #c8c2b2;
+	float:left;
+	padding:15px 10px;
+	position:relative;
+	width:260px;
+	_width:290px;
+}
+#block_route .block_route_infos h4
+{
+	margin:0px;
+}
+#block_route .block_route_infos h3
+{
+	color:#428b64;
+	font-size:14px;
+	font-weight:bold;
+	margin:0px;
+}
+#block_route .block_route_infos .block_route_place
+{
+	color:#428b64;
+	font-size:11px;
+	font-weight:bold;
+	margin:0px 0px 10px 0px;
+}
+#block_route .block_route_date 
+{
+	background:url('../images/bckg-trajet-fac-by-car.jpg') no-repeat top left;
+	height:69px;
+	padding:0px 0px 0px 5px;
+	position:absolute;
+	top:0px;
+	right:10px;
+	width:86px;
+	_width:91px;
+}
+#block_route .block_route_date h2
+{
+	font-weight:12px;
+}
+#block_route .block_route_date p
+{
+	font-family:Georgia;
+	font-size:12px;
+	font-weight:bold;
+	margin-left:36px;
+}
+
+#block_route .block_route_nb_passenger, #block_route .block_route_price
+{
+	background-color:#FFFFFF;
+	font-size:11px;
+	float: left;
+	margin: 0px 5px 10px 0px;
+	padding:5px;
+	text-align:center;
+	width: 115px;
+	_width: 125px;
+}
+#block_route .block_route_price
+{
+	margin-right: 0px;
+}
+#block_route .block_route_nb_passenger span, #block_route .block_route_price span, #block_route .block_route_required_price span
+{
+	font-size:20px;
+	font-weight:bold;
+}
+#block_route .block_route_required_price
+{
+	background-color:#FFFFFF;
+	font-size:11px;
+	margin: 0px 0px 10px 0px;
+	padding:5px;
+	text-align:center;
+	width: 245px;
+	_width: 255px;
+}
+.block_route_daily_day
+{
+	text-align:left;
+	font-size:12px;
+	float:left;
+	margin:5px 10px 0px 0px;
+}
+.block_route_daily_day span
+{
+	font-weight:bold;
+} 
+.block_route_day
+{
+	background:url('../images/rond-trajet-universite-umlv.gif') no-repeat top left;
+	font-size:11px;
+	float:left;
+	height:15px;
+	_height:16px;
+	margin:4px 2px 0px 2px;
+	padding:1px 0px 0px 4px;
+	width:12px;
+	_width:16px;
+}
+#block_route .driver, #block_route .passenger
+{
+	padding-left:22px;
+}
+.block_route_car
+{
+	margin-top:15px;
+}
+
+
+.back_espace_perso .big_btn_white
+{
+	background-position:left -41px;
+	margin-left:0px;
+	padding-left:25px;
+}
+
+/********** All my route **********/
+#all_my_route .driver, #all_my_route .passenger
+{
+	background-position:left 10px;
+}
+#all_my_route h2
+{
+	background:url('../images/pointille-covoiturage-universite.jpg') repeat-x bottom left;
+	padding:10px 0px 10px 27px;
+	margin-top:10px;
+}
+
+.block_route_profile_link
+{
+	display:block;
+	width:314px;
+	float:left;
+	margin-right:10px;
+}
+.block_route_profile_link:hover
+{
+	text-decoration:none;
+}
+.block_route_profile_link:hover h4
+{
+	text-decoration:underline;
+}
+#all_my_route .block_route_profile
+{
+	background-color:#dfd8c6;
+	border:1px solid #c8c2b2;
+	margin:5px 0px;
+	padding:5px;
+}
+#all_my_route .block_route_profile h4, #all_my_route .block_route_profile p
+{
+	font-size:12px;
+}
+#all_my_route .block_route_profile p
+{
+	margin:0px;
+}
+#all_my_route .block_route_profile .block_route_profile_infos
+{
+	float:left;
+	width:270px;
+}
+#all_my_route .block_route_profile .block_route_profile_nb_passenger
+{
+	background-color:#FFFFFF;
+	float:left;
+	padding:8px 4px;
+	font-size:11px;
+}
+#all_my_route .block_route_profile .block_route_profile_nb_passenger span
+{
+	font-size:12px;
+	font-weight:bold;
+}
+#all_my_route   ul
+{
+	margin:0px;
+}
+#all_my_route  li a
+{
+	font-size:12px;
+}
+
+#block_socialNetwork
+{
+	float:left;
+	width:200px;
+	margin-left:50px;
+}

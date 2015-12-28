@@ -1,0 +1,17 @@
+{% extends "layout/base.html" %}
+{% block content %}
+{% if cars|length > 0 %}
+	{% for car in cars %}
+		<h1>{{ car.model }}</h1>
+		<img src="{{ MEDIA_URL }}{{car.url_pic}}" alt="{{car.model}}" />
+		<p>
+		{% if car.has_ac != None %}
+			{% if car.has_ac %}
+				Voiture climatisée<br/>
+			{% endif %}
+		{% endif %}
+		Nombre de places : {{ car.nb_seats }}</p>
+	{% endfor %}
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Envoyer un nouveau message</h1>
+
+<div id="btn_messages">
+	<a class="btn_message_received" title="Messages reçus - Fac by car - Co-voiturage UMLV" href="/messages/">Messages reçus</a>
+	<a class="btn_message_send" title="Messages envoyés - Fac by car - Co-voiturage UMLV" href="/sended_messages/">Messages envoyés</a>
+</div>
+
+<form id="mess_form" action="/send_message/" method="post">
+	{% if contacts|length > 0 %}
+	<div class="fieldWrapper"> 
+		<!-- <p><label>{{ form.recipient.label }} :</label> {{ form.recipient }}
+		{% for error in form.recipient.errors %}<span class="error">{{ error } }</span>{% endfor %}</p>	-->
+		
+		<select name="recipient" size="1">
+		{% for contact in contacts %}
+			<option value="{{ contact.contact_id }}">{{ contact.username }}</option>
+		{% endfor %}
+		</select>
+		
+	</div>
+	<div class="fieldWrapper"> 
+		<p><label>{{ form.subject.label }} :</label> {{ form.subject }}
+		{% for error in form.subject.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>	
+	</div>
+	<div class="fieldWrapper"> 
+		<p><label>{{ form.content.label }} :</label> {{ form.content }}
+		{% for error in form.content.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>	
+	</div>
+
+	<input type="submit" class="submit_search" value="Envoyer" />
+		{% else %}
+	<div>
+	<p> Vous n'avez pas de contacts. Pour envoyer un message à une personne, veuillez ajouter cette personne dans votre liste de contacts </p>
+	<a href="/user_search/"> Rechercher un utilisateur </a> <br/>
+	<a href="/user_contacts_list/"> Liste de contacts </a> <br/>
+	</div>
+{% endif %}
+</form>
+
+{% endblock content %}

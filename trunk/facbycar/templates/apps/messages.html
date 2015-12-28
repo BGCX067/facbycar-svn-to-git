@@ -1,0 +1,23 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Messages reçus</h1>
+
+<div id="btn_messages">
+	<a class="btn_message_send" title="Messages envoyés - Fac by car - Co-voiturage UMLV" href="/sended_messages/">Messages envoyés</a>
+	<a class="btn_message_new" title="Nouveau message - Fac by car - Co-voiturage UMLV" href="/send_message/">Nouveau message</a>
+</div>
+{% for message in messages %}
+
+	<div {% if message.is_read == 0 %} class="message mess_no_read" {% else %} class="message mess_read"{% endif %}>
+		<a class="subject_mess" href="/read_message/?id={{ message.id }}"> {{message.subject|escape}}</a> <a class="suppr_mess" title="Supprimer le message" href="/delete_message_confirmation/?id={{ message.id }}"></a>
+		<p><span>Envoyé par</span> <a href="/user_profile/?u={{ message.writer.id }}">{{message.writer|escape}}</a> <span>le</span> {{message.date}}</p>
+		
+	</div>
+	
+{% endfor %}
+
+	
+<br />
+
+{% endblock content %}

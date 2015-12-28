@@ -1,0 +1,15 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Ajouter une voiture</h1>
+
+<form enctype="multipart/form-data" action={{ form_action }} method="post">
+    <table>
+        {{ form.as_p }}
+    </table>
+
+<p class="submit"><input type="submit" class="submit_search" value="Enregistrer" /></p>
+</form>
+
+
+{% endblock content %}

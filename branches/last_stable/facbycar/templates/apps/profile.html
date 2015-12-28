@@ -1,0 +1,216 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Espace personnel</h1>
+
+
+<div id="block_user">
+	<div id="top_block_user"></div>
+	<div id="content_block_user">
+		<div class="pict_block_user"><img src="{{ MEDIA_URL }}{{profile.url_pic}}" alt="{{user.username}}"/></div>
+		<div id="info_block_user">
+			
+			{% if profile.sex != '' %}
+				{% if profile.sex == 'M' %}
+				<h1 class="boy">{{ user.username }}</h1>
+				{% else %}
+				<h1 class="girl">{{ user.username }}</h1>
+				{% endif %}
+			{% else %}
+				<h1>{{ user.username }}</h1>
+			{% endif %}
+			<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+			{% if profile.age != NULL %}
+				<p>Age : {{ profile.age }} ans</p>
+			{% endif %}
+			{% if profile.cellphone != '' %}
+				{% if profile.is_cellphone_hidden == 0 %}
+				<p>Téléphone : {{profile.cellphone}}</p>
+				{% endif %}
+			{% endif %}
+			{% if user.email != NULL %}
+				{% if profile.is_email_hidden == 0 %}
+				<p>Email : {{user.email}}</p>
+				{% endif %}
+			{% endif %}
+			<p class="note_search">
+				{% if profile.note == 0 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-0.png"/>
+				{% else %}{% if profile.note > 0 and profile.note <= 0.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-0-5.png"/>
+				{% else %}{% if profile.note > 0.5 and profile.note <= 1 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-1.png"/>
+				{% else %}{% if profile.note > 1 and profile.note <= 1.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-1-5.png"/>
+				{% else %}{% if profile.note > 1.5 and profile.note <= 2 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-2.png"/>
+				{% else %}{% if profile.note > 2 and profile.note <= 2.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-2-5.png"/>
+				{% else %}{% if profile.note > 2.5 and profile.note <= 3 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-3.png"/>
+				{% else %}{% if profile.note > 3 and profile.note <= 3.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-3-5.png"/>
+				{% else %}{% if profile.note > 3.5 and profile.note <= 4 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-4.png"/>
+				{% else %}{% if profile.note > 4 and profile.note <= 4.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-4-5.png"/>
+				{% else %}{% if profile.note > 4.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-5.png"/>
+				{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+				({{ profile.nb_rating }} avis)
+			</p>
+	
+		</div>
+		<div class="clear"></div>
+		<h2>Préférences</h2>
+		{%if profile.is_talker != None %}
+			{% if profile.is_talker %}
+			<div title="Je parle facilement" class="pref_block_user is_talker"></div>
+			{% else %}
+			<div title="Je n'aime pas parler en voiture" class="pref_block_user is_no_talker"></div>
+			{% endif %}
+		{% endif %}
+		{%if profile.is_smoker != None %}
+			{% if profile.is_smoker %}
+			<div title="Je fume" class="pref_block_user is_smoker"></div>
+			{% else %}
+			<div title="Je ne fume" class="pref_block_user is_no_smoker"></div>
+			{% endif %}
+		{% endif %}
+		<!--<div title="Je peux prendre un gros sac" class="pref_block_user big_bag"></div>-->
+		<!--<div title="Je ne peux pas prendre de gros sac" class="pref_block_user big_bag"></div>-->
+		{%if profile.type_music != NULL %}
+			<div title="Style de musique" class="pref_block_user music"></div>
+			<p class="music_block_user">{{ profile.type_music }}</p>
+		{% else %}
+			<div title="Je n'écoute pas de musique en voiture" class="pref_block_user no_music"></div>
+		{% endif %}	
+		
+		<div class="clear"></div>
+			
+		{% if cars|length > 0 %}
+			<div id="info_block_car">
+				{% if cars|length == 1 %}
+				<h2>Voiture</h2>
+				{% else %}
+				<h2>Voitures</h2>
+				{% endif %}
+				{% for car in cars %}
+					<div>
+						<div class="pict_block_car"><img src="{{ MEDIA_URL }}{{car.url_pic}}" alt="{{car.model}}" /></div>
+						<h3>{{ car.model }}</h3>		
+						{% if car.has_ac != None %}
+							{% if car.has_ac %}
+								<p>Voiture climatisée</p>
+							{% endif %}
+						{% endif %}
+						<p>Nombre total de places : {{ car.nb_seats }}</p>
+					</div>
+					<div class="clear"></div>
+				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		
+			<a class="btn_add" href="/add_car/">Ajouter une voiture</a> 
+			{% if cars|length == 1 %}
+			<a class="btn_edit" href="/edit_car/">Editer ma voiture</a>
+			{% else %}
+			<a class="btn_edit" href="/edit_car/">Editer mes voitures</a>
+			{% endif %}
+		{% else %}
+			<h2>Voiture</h2>
+			<p>Vous n'avez pas de voiture.</p>
+			<a class="btn_add" href="/add_car/">Ajouter une voiture</a> 
+		{% endif %}
+	
+		
+		<a class="big_btn_green" href="/edit_profile/">Modifier mes informations</a>
+	</div>
+	<div id="bottom_block_user"></div>
+</div>
+
+<div id="block_message_profile">
+	<div class="block_mess_titre">
+	{% if messages|length > 0 %}
+		<h2 class="block_mess_is_no_read">Mes messages<a href="/messages/" title="{{ messages|length }} message(s) non lu(s)">{{ messages|length }}</a></h2>
+	{% else %}
+		<h2 class="block_mess_is_read">Mes messages</h2>
+	{% endif %}
+	</div>
+	<p><a class="puce" href="/messages/">Voir les messages reçus</a></p>
+	<p><a class="puce" href="/sended_messages/">Voir les messages envoyés</a></p>
+	<p><a class="puce" href="/send_message/">Nouveau message</a></p>
+</div>
+
+<div id="route_profile">
+	{% if routes_drivers|length > 0 %}
+	<div class="driver">	
+		<h2>Mes trajets comme conducteur</h2>
+		{% for route_driver in routes_drivers %}
+			<a title="{{ route_driver.city_d }} > {{ route_driver.city_a }}" href="/route/?id={{ route_driver.id }}">
+				<div class="block_route_profile">
+					<div class="block_route_profile_infos">
+						<h4>{{ route_driver.city_d }} > {{ route_driver.city_a }}</h4>
+						<p>Le <span>{{ route_driver.date_departure }}</span> à <span>{{ route_driver.hour|time:"H:i" }}</span></p>
+					</div>
+					<div class="block_route_profile_nb_passenger">
+						<span>{{ route_driver.nb_passengers }}</span> pl.
+					</div>
+					<div class="clear"></div>
+				</div>
+			</a>
+			<div class="clear"></div>
+		{% endfor %}
+		<ul>
+			<li><a title="Mes trajets Fac by car - Co-voiturage UMLV" href="/my_routes/">Voir tous mes trajets</a></li>
+		</ul>
+	</div>
+	{% endif %}
+	
+	{% if routes_passengers|length > 0 %}
+	<div class="passenger">
+		<h2>Mes trajets comme passager</h2>
+		{% for routes_passenger in routes_passengers %}
+			<a title="{{ routes_passenger.city_d }} > {{ routes_passenger.city_a }}" href="/route/?id={{ routes_passenger.id }}">
+				<div class="block_route_profile">
+					<div class="block_route_profile_infos">
+						<h4>{{ routes_passenger.city_d }} > {{ routes_passenger.city_a }}</h4>
+						<p>Le <span>{{ routes_passenger.date_departure }}</span> à <span>{{ routes_passenger.hour|time:"H:i" }}</span></p>
+					</div>
+					<div class="block_route_profile_nb_passenger">
+						<span>{{ routes_passenger.nb_passengers }}</span> pl.
+					</div>
+					<div class="clear"></div>
+				</div>
+			</a>
+			<div class="clear"></div>
+		{% endfor %}
+		<ul>
+			<li><a title="Mes trajets Fac by car - Co-voiturage UMLV" href="/my_routes/">Voir tous mes trajets</a></li>
+		</ul>
+	</div>
+	{% endif %}
+	
+</div>
+
+<div class="clear"></div>
+
+{% if comments|length > 0 %}
+<h2 id="titre_comm_profil">Commentaires</h2>
+
+<div id="block_comments">
+	<div id="premier"></div>
+	{% for comment in comments %}
+	<div class="block_comment">
+		<div class="block_comm">
+			<p class="block_comment_title"><a title="Profil fac by car de {{ comment.writer }}" href="/user_profile/?u={{ comment.writer.id }}">{{ comment.writer }}</a> a écrit le <span>{{ comment.date|date:"d-m-Y" }}</span></p>
+			<p class="block_comment_note"><img alt="Fac by car - Note de {{ comment.writer }}" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-{{ comment.note }}.png"/></p>
+			<p class="block_comment_content">{{ comment.content }}</p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+
+{% endblock content %}

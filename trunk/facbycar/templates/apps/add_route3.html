@@ -1,0 +1,68 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Ajouter un trajet</h1>
+<img alt="Fac by car - Co-voiturage Université de Marne-la-vallée" src="{{ MEDIA_URL }}/images/ajout-trajet-co-voiturage-3.jpg"/>
+
+<form action={{ form_action }} method="post" id="form_route3" enctype="multipart/form-data" >
+	{% if driver == 1 %}
+		
+		{% if voiture == 1 %}
+			<h2>Préférence</h2>
+			<div class="fieldWrapper"> 
+				<p><label>{{ form.car.label }} : </label> {{ form.car }}
+				{% for error in form.car.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+			</div>
+		{% else %}
+			<h2>Voiture</h2>
+			<div class="fieldWrapper"> 
+				<p><label>{{ form.model.label }} : </label> {{ form.model }}
+				{% for error in form.model.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+			</div>
+			<div class="fieldWrapper"> 
+				<p><label>{{ form.has_ac.label }} : </label> {{ form.has_ac }}
+				{% for error in form.has_ac.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+			</div>
+			<div class="fieldWrapper"> 
+				<p><label>{{ form.nb_seats.label }} : </label> {{ form.nb_seats }}
+				{% for error in form.nb_seats.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+			</div>
+			<div class="fieldWrapper"> 
+				<p><label>{{ form.url_pic.label }} : </label> {{ form.url_pic }}
+				{% for error in form.url_pic.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+			</div>
+			<h2>Préférence</h2>
+		{% endif %}
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.nb_passengers.label }} <span class="required">*</span> : </label> {{ form.nb_passengers }}
+			{% for error in form.nb_passengers.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		<div class="fieldWrapper"> 
+			<p>{{ form.has_big_boot }} <label>{{ form.has_big_boot.label }} </label>  
+			{% for error in form.has_big_boot.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		
+		<h2>Tarif</h2>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.price.label }}  <span class="required">*</span> : </label> {{ form.price }} €
+			{% for error in form.price.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div> 
+	{% else %}
+		<h2>Préférence</h2>
+		<div class="fieldWrapper"> 
+			<p>{{ form.has_big_boot }} <label>{{ form.has_big_boot.label }} </label>  
+			{% for error in form.has_big_boot.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		
+		<h2>Tarif</h2>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.price.label }}  : </label> {{ form.price }} €
+			{% for error in form.price.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div> 
+	{% endif %}
+	<p class="submit_retour"><input type="button" class="submit_search" value="< Retour" onclick="javascript:history.back()" /></p>
+	<p class="submit"><input type="submit" class="submit_search" value="Enregistrer" /><p>
+</form>
+
+
+{% endblock content %}

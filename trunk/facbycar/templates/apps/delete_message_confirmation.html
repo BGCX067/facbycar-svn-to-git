@@ -1,0 +1,13 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<p>
+Supprimer le message ? <br/>
+<a title="Supprimer le message" href="/delete_message/?id={{ id }}"> Oui</a> /  <a title="Retour messages" href="/messages"> Non</a>
+</p>
+<br />
+<a href="/profile/">Retour vers profile</a>
+<br />
+<a href="/">Accueil</a>
+
+{% endblock content %}

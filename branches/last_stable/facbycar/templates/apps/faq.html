@@ -1,0 +1,103 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Foire Aux Questions</h1>
+
+<h2>Les services</h2>
+<ul>
+	<li><a title="Co-voiturage Fac by Car - Comment s'inscrire ?" href="#service1">Comment s'inscrire ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Que faire si je ne trouve aucun trajet ?" href="#service2">Que faire si je ne trouve aucun trajet ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment est calculé le coût du trajet ?" href="#service3">Comment est calculé le coût du trajet ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment se désinscrire?" href="#service4">Comment se désinscrire?</a></li>
+</ul>
+<h2>Les membres</h2>
+<ul>
+	<li><a title="Co-voiturage Fac by Car - Comment contacter un passager ou un conducteur ?" href="#membre1">Comment contacter un passager ou un conducteur ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment voir les évaluations laissés par mes contacts ?" href="#membre2">Comment voir les évaluations laissés par mes contacts ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment noter un membre ?" href="#membre3">Comment noter un membre ?</a></li>
+</ul>
+<h2>Mes trajets</h2>
+<ul>
+	<li><a title="Co-voiturage Fac by Car - Comment s'inscrire à un trajet ?" href="#trajet1">Comment s'inscrire à un trajet ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment se désinscrire d'un trajet ?" href="#trajet2">Comment se désinscrire d'un trajet ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment accepter une demande de trajet ?" href="#trajet3">Comment accepter une demande de trajet ?</a></li>
+</ul>
+<h2>Modifier mes informations</h2>
+<ul>
+	<li><a title="Co-voiturage Fac by Car - Comment modifier les informations de mon compte (age, sexe, email, numéro de téléphone, voiture) ?" href="#modif1">Comment modifier les informations de mon compte (age, sexe, email, numéro de téléphone, voiture) ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment rajouter une voiture ?" href="#modif2">Comment rajouter une voiture ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment changer un de mes trajets en tant que conducteur ?" href="#modif3">Comment changer un de mes trajets en tant que conducteur ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment supprimer un de mes trajets en tant que conducteur ?" href="#modif4">Comment supprimer un de mes trajets en tant que conducteur ?</a></li>
+	<li><a title="Co-voiturage Fac by Car - Comment préciser mon indisponibilité sur un trajet régulier ?" href="#modif5">Comment préciser mon indisponibilité sur un trajet régulier ?</a></li>
+</ul>
+
+<div class="block_faq">
+	<h2>Les services</h2>
+
+	<h3><a name="service1">Comment s'inscrire ?</a></h3>
+	<p>Pour s'inscrire, accédez à la page en cliquant sur le bouton de gauche "s'inscrire". On vous demande alors de choisir un login ainsi qu'un mot de passe.</p>
+
+	<h3><a name="service2">Que faire si je ne trouve aucun trajet ?</a></h3>
+	<p>Nous vous proposons d'élargir votre recherche aux villes alentours. Ainsi sélectionnez les kilomètres du périmètre.<br/>
+	Vous pouvez aussi entrer une autre ville de départ et/ou d'arrivée.<br/>
+	Si vous ne trouvez aucune réponse pertinente, nous vous invitons à ajouter un trajet en tant que passager.</p>
+
+	<h3><a name="service3">Comment est calculé le coût du trajet ?</a></h3>
+	<p>Le conducteur fixe lui-même le prix par passager sachant que la voiture sera complète. Ainsi, si la voiture n'est pas complète, le prix sera plus élevé.</p>
+
+	<h3><a name="service4">Comment se désinscrire?</a></h3>
+	<p>Dans votre "Espace personnel", à la rubrique "Modifier mes informations" pour trouverez un bouton "se desinscrire".
+	Pour confirmer cette action, il faudra entrer votre mot de passe.</p>
+</div>
+
+<div class="block_faq">
+	<h2>Les membres</h2>
+
+	<h3><a name="membre1">Comment contacter un passager ou un conducteur ?</a></h3>
+	<p>Vous êtes sur la page de résultat de recherche. Cliquez sur le bouton "Contacter" pour obtenir plus de précsions sur le trajet qu'il propose.</p>
+
+	<h3><a name="membre2">Comment voir les évaluations laissés par mes contacts ?</a></h3>
+	<p>Les derniers commentaires et évaluations sont affichés en bas de la page "Espace personnel". Vous pouvez cliquez sur "Voir tous les commentaires".</p>
+
+	<h3><a name="membre3">Comment noter un membre ?</a></h3>
+	<p>En allant sur le profil d'un membre, vous pouvez laisser un commentaire ainsi qu'une note.</p>
+</div>
+
+<div class="block_faq">
+	<h2>Mes trajets</h2>
+
+	<h3><a name="trajet1">Comment s'inscrire à un trajet ?</a></h3>
+	<p>Vous êtes sur la page de résultat de recherche. Cliquez sur le bouton "Participer au trajet". Vous devez attendre que le membre valide votre demande pour être sûr de faire partie du trajet.</p>
+
+	<h3><a name="trajet2">Comment se désinscrire d'un trajet ?</a></h3>
+	<p>Dans votre "Espace personnel" vous pouvez voir le trajets auquels vous êtes inscrits sur la colonne de droite. Cliquez sur "Annuler ma demande" après avoir pris soin de contacter le conducteur suffisamment tôt (une semaine).</p>
+
+	<h3><a name="trajet3">Comment accepter une demande de trajet ?</a></h3>
+	<p>Les demandes de trajets s'affichent dans l' "espace perso" à droite dans la liste "Mes trajets comme conducteur". Le nombre de demandes s'affichent, cliquez pour pouvoir contacter le membre, voir son profil, voir ses évaluations ou accepter directement sa demande.<br/>
+	Il y a aussi un accès rapide sur la colonne de gauche "Demandes en attente".
+	</p>
+</div>
+
+<div class="block_faq">
+	<h2>Modifier mes informations</h2>
+
+	<h3><a name="modif1">Comment modifier les informations de mon compte (age, sexe, email, numéro de téléphone, voiture) ?</a></h3>
+	<p>Rendez-vous sur la page "espace perso", puis cliquez sur "Editer mon profil" ou "Afficher mes voitures", vous accéderez à un formulaire à valider par la suite.</p>
+
+	<h3><a name="modif2">Comment rajouter une voiture ?</a></h3>
+	<p>Rendez-vous sur la page "Espace personnel", puis cliquez sur "Ajouter une voiture". Vous pouvez mettre une photo de votre voiture.</p>
+
+	<h3><a name="modif3">Comment changer un de mes trajets en tant que conducteur ?</a></h3>
+	<p>Vous devez tout d'abord vous assurer que personne n'est insrit à votre trajet. Si ce n'est pas le cas, veuillez contacter les passagers le plus tôt possible (une semaine avant) pour les informer des changements, au cas où le trajet ne les conviendrais plus.<br/>
+	Ensuite, dans votre "Espace personnel", accédez à "modifier ce trajet".</p>
+
+	<h3><a name="modif4">Comment supprimer un de mes trajets en tant que conducteur ?</a></h3>
+	<p>Vous devez tout d'abord vous assurer que personne n'est insrit à votre trajet. Si ce n'est pas le cas, veuillez contacter les passagers le plus tôt possible (une semaine avant) pour qu'ils puissent trouver un autre trajet.<br/>
+	Ensuite, dans votre "Espace personnel", cliquez sur "supprimer ce trajet".</p>
+
+	<h3><a name="modif5">Comment préciser mon indisponibilité sur un trajet régulier ?</a></h3>
+	<p>Lors de l'ajout d'un trajet, vous pouvez préciser la date de début et de fin de validité.</p>
+</div>
+
+
+{% endblock content %}

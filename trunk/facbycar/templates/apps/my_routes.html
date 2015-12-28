@@ -1,0 +1,94 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Mes trajets</h1>
+<div id="all_my_route">
+{% if routes_driver|length > 0 %}
+	<div class="driver">
+		<h2>Mes trajets en tant que conducteur : {{ routes_driver|length }}
+		{% if routes_drivers|length > 1 %}
+		trajets
+		{% else %}
+		trajet
+		{% endif %} 
+		</h2>
+
+		{% for route in routes_driver %}
+			
+			<div class="block_route_profile">
+				<div class="block_route_profile_infos">
+					<a class="block_route_profile_link" title="{{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">
+						<h4>{{ route.city_d }} > {{ route.city_a }}</h4>
+						{% if route.is_daily == 1 %}
+							<p>Du <span>{{ route.date_departure }}</span> au <span>{{ route.date_daily.end_time }}</span></p>
+						{% else %}
+							<p>Le <span>{{ route.date_departure }}</span> à <span>{{ route.hour|time:"H:i" }}</span></p>
+						{% endif %}
+					</a>
+					<!--Demandes-->
+					{% if route.passengers.all|length > 0 %}
+						{% if route.passengers.all|length == 1 %}
+							<p class="demandes"><span>{{ route.passengers.all|length }}</span> demande</p>
+						{% else %}
+							<p  class="demandes"><span>{{ route.passengers.all|length }}</span> demandes</p>
+						{% endif %}
+					{% endif %}
+				</div>
+				<div class="block_route_profile_nb_passenger">
+					<span>{{ route.nb_passengers }}</span> pl.
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+
+		{% endfor %}
+		<div class="clear"></div>
+	</div>
+{% else %}
+	<h2>Vous n'avez aucun trajet en tant que conducteur!</h2>
+{% endif %}
+
+{% if routes_passengers|length > 0 %}
+	<div class="passenger">
+		<h2>Mes trajets en tant que passager : {{ routes_passengers|length }}
+		{% if routes_passengers|length > 1 %}
+		trajets
+		{% else %}
+		trajet
+		{% endif %} 
+		</h2>
+	
+		{% for route in routes_passengers %}
+			
+			<div class="block_route_profile">
+				<div class="block_route_profile_infos">
+					<a class="block_route_profile_link" title="{{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">
+						<h4>{{ route.city_d }} > {{ route.city_a }}</h4>
+						{% if route.is_daily == 1 %}
+							<p>Du <span>{{ route.date_departure }}</span> au <span>{{ route.date_daily.end_time }}</span></p>
+						{% else %}
+							<p>Le <span>{{ route.date_departure }}</span> à <span>{{ route.hour|time:"H:i" }}</span></p>
+						{% endif %}
+					</a>
+					<!--Demandes-->
+					{% if route.passengers.all|length > 0 %}
+						{% if route.passengers.all|length == 1 %}
+							<p class="demandes"><span>{{ route.passengers.all|length }}</span> demande</p>
+						{% else %}
+							<p  class="demandes"><span>{{ route.passengers.all|length }}</span> demandes</p>
+						{% endif %}
+					{% endif %}
+				</div>
+				<div class="block_route_profile_nb_passenger">
+					<span>{{ route.nb_passengers }}</span> pl.
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+		{% endfor %}
+	</div>
+{% else %}
+	<h2>Vous n'avez aucun trajet en tant que passager!</h2>
+{% endif %}
+</div>
+{% endblock content %}

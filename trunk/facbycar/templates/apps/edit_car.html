@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<form enctype="multipart/form-data" action={{ form_action }} method="post">
+    <table>
+        {{ formset }}
+    </table>
+
+<input type="submit" value="Enregistrer" />
+</form>
+
+
+{% endblock content %}

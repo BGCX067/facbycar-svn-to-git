@@ -1,0 +1,60 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+	<link rel="stylesheet" href="../media/css/calendar.css?random=20051112" type="text/css" media="screen" /> 
+    <script type="text/javascript" src="../media/js/calendar.js?random=20060118"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="../media/js/aucompleteCityAjout.js"></script>
+
+<h1>Ajouter un trajet</h1>
+<img alt="Fac by car - Co-voiturage Université de Marne-la-vallée" src="{{ MEDIA_URL }}/images/ajout-trajet-co-voiturage-2.jpg"/>
+
+<h2>Fréquence</h2>
+
+
+{% if daily == '1' %}
+	<form action={{ form_action }} method="post" id="form_route2" name="form_route2" onsubmit="return validateFormAddRoute2()" >
+		<h3>Trajet quotidien</h3>
+		<div id="form_route_time_daily">
+			<p><label for="date_mo">Lundi :</label>{{ form_daily.hour_mo }}{{ form_daily.minutes_mo }}</p>
+			<p><label for="date_tu">Mardi :</label>{{ form_daily.hour_tu }}{{ form_daily.minutes_tu }}</p>
+			<p><label for="date_we">Mercredi :</label>{{ form_daily.hour_we }}{{ form_daily.minutes_we }}</p>
+			<p><label for="date_th">Jeudi :</label>{{ form_daily.hour_th }}{{ form_daily.minutes_th }}</p>
+			<p><label for="date_fr">Vendredi :</label>{{ form_daily.hour_fr }}{{ form_daily.minutes_fr }}</p>
+			<p><label for="date_sa">Samedi :</label>{{ form_daily.hour_sa }}{{ form_daily.minutes_sa }}</p>
+			<p><label for="date_su">Dimanche :</label>{{ form_daily.hour_su }}{{ form_daily.minutes_su }}</p>
+			<!--{{ form_daily.as_p }}-->
+			<span class="error" style="display:none">Veuillez remplir au moins un jour.</span>
+		</div>
+		<div id="form_route_time_validity">
+			<p><label for="start_time">Date de début de validité <span class="required">*</span> :</label>
+			<input type="text" value="aaaa-mm-jj"  name="start_time" size="18"  style="width:130px" id="start_time" class="date" onFocus="javascript:if(this.value=='aaaa-mm-jj')this.value='';this.style.color='#000000'" onclick="displayCalendar(this,'yyyy-mm-dd',this,true)"/>			
+			</p>
+			<p><label for="end_time">Date de fin de validité <span class="required">*</span> :</label> <input type="text" value="aaaa-mm-jj"  name="end_time" size="18" onFocus="javascript:if(this.value=='aaaa-mm-jj')this.value='';this.style.color='#000000'" style="width:130px" id="end_time" class="date" onclick="displayCalendar(this,'yyyy-mm-dd',this,true)"/></p>
+			<span class="error" style="display:none">Veuillez remplir la date de début et la date de fin de validité.</span>
+			<span class="error2" style="display:none">La date sélectionnée n'est pas valide (elle ne doite pas être antérieure à aujourd'hui).</span>
+		</div>
+		<div class="clear"></div>
+{% else %}
+	<form action={{ form_action }} method="post" id="form_route2" name="form_route2" onsubmit="return validateFormAddRoute2_2()" >
+		<h3>Trajet ponctuel</h3>
+		<div id="form_route_not_daily">
+			<p><label for="date">Départ le <span class="required">*</span>:</label> <input type="text" value="aaaa-mm-jj"  name="date" id="date" class="date" onclick="displayCalendar(this,'yyyy-mm-dd',this,true)" onFocus="javascript:if(this.value=='aaaa-mm-jj')this.value='';this.style.color='#000000'" /></p>
+			<span class="error" style="display:none">Veuillez remplir la date de départ.</span>
+			<span class="error2" style="display:none">La date sélectionnée n'est pas valide (elle ne doite pas être antérieure à aujourd'hui).</span>
+		</div>
+		<div class="fieldWrapper"> 
+			<!--<p><label>{{ form.hour.label }}  : </label> {{ form.hour }} 
+			{% for error in form.hour.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>-->			
+			<p><label>Heure de départ : </label>
+				{{ form.hour }}
+				{{ form.minutes }}
+			</p>
+			<span class="error" style="display:none">Veuillez remplir l'heure de départ.</span>
+		</div>   
+{% endif %}
+	<p class="submit_retour"><input type="button" class="submit_search" value="< Retour" onclick="javascript:history.back()" /></p>
+	<p class="submit"><input type="submit" class="submit_search" value="Suivant >" /></p>
+</form>
+
+
+{% endblock content %}

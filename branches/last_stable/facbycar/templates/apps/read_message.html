@@ -1,0 +1,59 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>{{message.subject}}</h1>
+
+<div id="btn_messages">
+	<a class="btn_message_received" title="Messages reçus - Fac by car - Co-voiturage UMLV" href="/messages/">Messages reçus</a>
+	<a class="btn_message_send" title="Messages envoyés - Fac by car - Co-voiturage UMLV" href="/messages/">Messages envoyés</a>
+	<a class="btn_message_answer" title="Répondre - Fac by car - Co-voiturage UMLV" href="/send_message/?id={{ message.id }}">Répondre</a>
+	<a class="suppr_mess" title="Supprimer le message" href="/delete_message/?id={{ message.id }}"></a>
+</div>
+
+<div id="read_message">
+
+
+	
+	<p><span>par</span> <a href="/user_profile/?u={{ message.writer.id }}">{{message.writer}}</a> <span>le</span> {{message.date}}</p>
+	
+	<div id="top_read_message"></div>
+	<div id="content_read_message">
+	
+	
+	<!-- PROBLEME DE FUSION DE LISTE ET DE TRIE DANS READ MESSAGE DE VIEWS-->
+	{% for message in messages %}
+		{% if message.writer_id == message.id_owner %}
+			<div id="message_envoye">
+		{% else %}
+			<div id="message_reçu">
+		{% endif %}
+		<h1>{{message.subject}} </h1><br /> envoyé par {{ r.username }}  reçu {{ w.username}} appartient à {{ message.id_owner}} le {{ message.date}}<p>{{message.content|linebreaksbr}}</p>
+		
+		<!--
+		{%if message.writer == r.id %}
+			<h1>{{message.subject}} </h1><br /> envoyé par {{ r.username }}  reçu {{ w.username}} appartient à {{ message.id_owner}} le {{ message.date}}<p>{{message.content}}</p>
+		{% else %}
+			<h1>{{message.subject}} </h1><br /> envoyé par {{ w.username }}  reçu {{ r.username }} appartient à {{ message.id_owner}} le {{ message.date}}<p>{{message.content}}</p> 
+		{% endif %}
+		
+		-->
+		
+		</div>
+		
+	{% endfor %} 
+	
+	
+	<!--{% for message in messages1 %}
+		<h1>{{message.subject}} </h1><br /> envoyé par {{ message.writer_id }}  reçu {{ message.recipient_id}} appartient à {{ message.id_owner}}<p>{{message.content}}</p>
+	{% endfor %}
+	</div>
+		<div id="content_read_message">
+	{% for message2 in messages2 %}
+		<h1>{{message2.subject}} </h1><br /> {{ message.writer_id }}  reçu {{ message.recipient_id}} appartient à {{ message2.id_owner}}<p>{{message2.content}}</p>
+	{% endfor %} -->
+	</div>
+	
+	
+	<div id="bottom_read_message"></div>
+</div>
+{% endblock content %}

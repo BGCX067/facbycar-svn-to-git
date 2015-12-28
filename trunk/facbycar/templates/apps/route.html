@@ -1,0 +1,287 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+ 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.6.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
+
+{% if route.is_daily == 1 %}	
+<h1 class="title_route">{{ route.city_d }} > {{ route.city_a }} <br/>du {{ route.date_departure }} au {{ daily.end_time }}</h1>
+{% else %}	
+<h1 class="title_route">{{ route.city_d }} > {{ route.city_a }} <br/>le {{ route.date_departure }} à {{ route.hour|time:"H:i" }}</h1>
+{% endif %}	
+
+<div id="block_socialNetwork">
+	<a title="Facebook - Fac by car" onclick="window.open(this.href,'sharer','toolbar=0,status=0,width=626,height=436'); return false;" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffacbycar.alwaysdata.net%2Froute%2F?id={{ route.id }}&t=Fac_by_Car"><img src="../media/images/facebook-fac-by-car.jpg"/></a>
+    
+    <a title="Twitter - Fac by car" href="http://twitter.com/home?status=Ce trajet peut vous interesser http://facbycar.alwaysdata.net/route/?id={{ route.id }}"><img src="../media/images/twitter-fac-by-car.jpg"/></a>
+    
+</div>
+
+<div id="block_route">
+	<div class="block_route_infos">
+		<h4>Départ :</h4>
+		<h3 id="cityd">{{ route.city_d }}</h3>
+		<p class="block_route_place" id="address">{{ route.place_d }}</p>
+		<h4>Arrivée :</h4>
+		<h3 id="citya" >{{ route.city_a }}</h3>
+		<p class="block_route_place" id="address2">{{ route.place_a }}</p>
+		
+		
+		<p >Distance : <span id="distance">...</span></p>
+		<p >Durée : <span id="duree">...</span></p>
+	</div>
+		
+	{% if route.is_daily == 1 %}	
+	<div class="block_route_date2">
+		<p>du</p>
+		<h2>{{ route.date_departure|date:"d-m-Y" }}</h2>
+		<p>au</p>
+		<h2>{{ daily.end_time|date:"d-m-Y" }}</h2>
+	</div>
+	{% else %}
+	<div class="block_route_date">
+		<h2>{{ route.date_departure|date:"d-m-Y" }}</h2>
+		<p>{{ route.hour|time:"H:i" }}</p>
+	</div>
+	{% endif %}
+	
+	{% if route.is_driver == 1 %}
+		<div class="block_route_nb_passenger"><span>{{ route.nb_passengers }}</span> places disponibles</div>
+		<div class="block_route_price"><span>{{ route.price }} €</span> par passager</div>
+	{% else %}
+		<div class="block_route_required_price">Prix souhaité : <span>{{ route.price }} €</span> </div>
+	{% endif %}
+	<div class="clear"></div>
+	
+	
+	{% if route.is_daily == 1 %}
+		<p class="block_route_daily_day"><span>Trajet</span></p>
+			{% if daily.date_mo != '' %}
+			<div class="block_route_day" title="Lundi">L</div> 
+			{% endif %}
+			{% if daily.date_tu != '' %}
+			<div class="block_route_day" title="Mardi">M</div> 
+			{% endif %}
+			{% if daily.date_we != '' %}
+			<div class="block_route_day" title="Mercredi">M</div> 
+			{% endif %}
+			{% if daily.date_th != '' %}
+			<div class="block_route_day" title="Jeudi">J</div> 
+			{% endif %}
+			{% if daily.date_fr != '' %}
+			<div class="block_route_day" title="Vendredi">V</div> 
+			{% endif %}
+			{% if daily.date_sa != '' %}
+			<div class="block_route_day" title="Samedi">S</div> 
+			{% endif %}
+			{% if daily.date_su != '' %}
+			<div class="block_route_day" title="Dimanche">D</div> 
+			{% endif %}
+		<div class="clear"></div>
+		<p class="block_route_daily_h"><span>quotidien</span></p>
+			{% if daily.date_mo != '' %}
+			<div class="block_route_h" title="{{ daily.date_mo }}">{{ daily.date_mo }}</div> 
+			{% endif %}
+			{% if daily.date_tu != '' %}
+			<div class="block_route_h" title="{{ daily.date_tu }}">{{ daily.date_tu }}</div> 
+			{% endif %}
+			{% if daily.date_we != '' %}
+			<div class="block_route_h" title="{{ daily.date_we }}">{{ daily.date_we }}</div> 
+			{% endif %}
+			{% if daily.date_th != '' %}
+			<div class="block_route_h" title="{{ daily.date_th }}">{{ daily.date_th }}</div> 
+			{% endif %}
+			{% if daily.date_fr != '' %}
+			<div class="block_route_h" title="{{ daily.date_fr }}">{{ daily.date_fr }}</div> 
+			{% endif %}
+			{% if daily.date_sa != '' %}
+			<div class="block_route_h" title="{{ daily.date_sa }}">{{ daily.date_sa }}</div> 
+			{% endif %}
+			{% if daily.date_su != '' %}
+			<div class="block_route_h" title="{{ daily.date_su }}">{{ daily.date_su }}</div> 
+			{% endif %}
+			
+		<div class="clear"></div>
+		<!--<p class="block_route_daily_day">jusqu'au <span>{{ daily.end_time }}</span></p>
+		<div class="clear"></div>-->
+	{% else %}
+		<p><strong>Trajet ponctuel</strong></p>
+	{% endif %}
+	
+	{% if user_route != user and auth == 1 %}
+		{% if p == 1 %}
+			<div id="button_participate">Vous participez</div>
+		{% else %}
+			<form action="" type="POST" id="form_participate">
+				{% csrf_token %}
+				<input type="hidden" value="{{ user.id }}" name="id_user" id="id_user"/>
+				<input type="hidden" value="{{ route.id }}" name="id_route" id="id_route"/>
+				<input type="submit" class="submit_search" id="participate" value="Participer" />
+			</form>
+		{% endif %}
+	{% endif %}
+
+</div>
+
+{% if user_route != user %}
+<div id="block_user" class="block_user_route">
+	<div id="top_block_user"></div>
+	<div id="content_block_user">
+		{% if route.is_driver == 1 %}
+		<h1 class="driver">Conducteur recherchant un passager : </h1>
+		{% else %}
+		<h1 class="passenger">Passager recherchant un conducteur : </h1>
+		{% endif %}
+		<div class="pict_block_user"><img src="{{ MEDIA_URL }}{{ profile.url_pic }}" alt="{{user_route.username}}"/></div>
+		<div id="info_block_user">
+			
+			{% if profile.sex != '' %}
+				{% if profile.sex == 'M' %}
+				<h1 class="boy">{{ user_route.username }}</h1>
+				{% else %}
+				<h1 class="girl">{{ user_route.username }}</h1>
+				{% endif %}
+			{% else %}
+				<h1>{{ user_route.username }}</h1>
+			{% endif %}
+			
+			{% if auth == 1 %}
+				<h2>{{ user_route.first_name }} {{ user_route.last_name }}</h2>
+				{% if profile.age != NULL %}
+					<p>Age : {{ profile.age }} ans</p>
+				{% endif %}
+				{% if profile.cellphone != '' %}
+					{% if profile.is_cellphone_hidden == 0 %}
+					<p>Téléphone : {{profile.cellphone}}</p>
+					{% endif %}
+				{% endif %}
+				{% if user_route.email != NULL %}
+					{% if profile.is_email_hidden == 0 %}
+					<p>Email : {{user_route.email}}</p>
+					{% endif %}
+				{% endif %}
+			{% endif %}
+			
+			<p class="note_search">
+				{% if profile.note == 0 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-0.png"/>
+				{% else %}{% if profile.note > 0 and profile.note <= 0.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-0-5.png"/>
+				{% else %}{% if profile.note > 0.5 and profile.note <= 1 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-1.png"/>
+				{% else %}{% if profile.note > 1 and profile.note <= 1.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-1-5.png"/>
+				{% else %}{% if profile.note > 1.5 and profile.note <= 2 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-2.png"/>
+				{% else %}{% if profile.note > 2 and profile.note <= 2.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-2-5.png"/>
+				{% else %}{% if profile.note > 2.5 and profile.note <= 3 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-3.png"/>
+				{% else %}{% if profile.note > 3 and profile.note <= 3.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-3-5.png"/>
+				{% else %}{% if profile.note > 3.5 and profile.note <= 4 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-4.png"/>
+				{% else %}{% if profile.note > 4 and profile.note <= 4.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-4-5.png"/>
+				{% else %}{% if profile.note > 4.5 %}
+				<img alt="Fac by car - Note" src="{{ MEDIA_URL }}/images/fac-by-car-etoile-5.png"/>
+				{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+				({{ profile.nb_rating }} avis)
+			</p>
+	
+		</div>
+		<div class="clear"></div>
+		<h2>Préférences</h2>
+		{%if profile.is_talker != None %}
+			{% if profile.is_talker %}
+			<div title="Je parle facilement" class="pref_block_user is_talker"></div>
+			{% else %}
+			<div title="Je n'aime pas parler en voiture" class="pref_block_user is_no_talker"></div>
+			{% endif %}
+		{% endif %}
+		{%if profile.is_smoker != None %}
+			{% if profile.is_smoker %}
+			<div title="Je fume" class="pref_block_user is_smoker"></div>
+			{% else %}
+			<div title="Je ne fume" class="pref_block_user is_no_smoker"></div>
+			{% endif %}
+		{% endif %}
+
+		{%if profile.type_music != NULL %}
+			<div title="Style de musique" class="pref_block_user music"></div>
+			<p class="music_block_user">{{ profile.type_music }}</p>
+		{% else %}
+			<div title="Je n'écoute pas de musique en voiture" class="pref_block_user no_music"></div>
+		{% endif %}	
+		
+		<div class="clear"></div>
+		
+		{% if auth == 1 %}		
+			{% if route.is_driver == 1 and route.car %}
+			<div id="info_block_car">
+				<h2>Voiture</h2>
+				
+					<div>
+						<div class="pict_block_car"><img src="{{ MEDIA_URL }}{{route.car.url_pic}}" alt="{{route.car.model}}" /></div>
+						<h3>{{ route.car.model }}</h3>		
+						{% if route.car.has_ac != None %}
+							{% if route.car.has_ac %}
+								<p>Voiture climatisée</p>
+							{% endif %}
+						{% endif %}
+						<p>Nombre total de places : {{ route.car.nb_seats }}</p>
+					</div>
+			</div>
+			<div class="clear"></div>
+			{% endif %}
+		
+			<a class="button button_contact" href="/reply_message/?id={{ user_route.id }}">Contacter </a>
+			<a class="button button_fiche" href="/user_profile/?u={{ user_route.id }}">Fiche profil </a>
+		{% endif %}
+		
+		<div class="clear"></div>
+	</div>
+	<div id="bottom_block_user"></div>
+</div>
+{% else %}
+<div id="block_user" class="block_demandes">
+	{% if route.passengers.all|length > 0 %}
+		{% if route.passengers.all|length == 1 %}
+			<h2>{{ route.passengers.all|length }} demande</h2>
+		{% else %}
+			<h2>{{ route.passengers.all|length }} demandes</h2>
+		{% endif %}
+		{% for user_passenger in route.passengers.all %}
+			<div class="demande_user">
+				<p>{{ user_passenger.first_name }} {{ user_passenger.last_name }} ({{ user_passenger.username }})</p>
+				<ul>
+					<li><a href="/user_profile/?u={{ user_passenger.id }}">Fiche profil</a></li>
+					<li><a href="/reply_message/?id={{ user_passenger.id }}">Contacter</a></li>
+				</ul>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<a class="button button_contact" href="/my_routes/">Mes trajets</a>
+	<a class="button button_fiche" href="/profile/">Mon profil </a>
+</div>
+{% endif %}
+
+
+<div class="clear"> </div>
+<h2>Carte du trajet</h2>
+<div id="map_canvas" style="width:650px; height:300px"></div>
+
+<!-- Popin -->
+<div class="overlay">
+	<div class="popin" id="rep">
+		<h1>{{ route.city_d }} > {{ route.city_a }}</h1>
+		<p>Vous souhaitez participer au trajet <strong>{{ route.city_d }} > {{ route.city_a }}</strong>.</p>
+		<p>Votre demande a bien été enregistrée. </p>
+		<p><strong><a href="/user_profile/?u={{ user_route.id }}">{{ user_route.username }}</a></strong> vous contactera dès que possible.</p>
+		<div class="close"></div>
+	</div>
+</div>
+
+{% endblock content %}

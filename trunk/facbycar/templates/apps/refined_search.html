@@ -1,0 +1,14 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}css/calendar.css?random=20051112" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ MEDIA_URL }}js/calendar.js?random=20060118"></script>
+<form enctype="multipart/form-data" action={{ form_action }} method="post">
+<p>Prix entre : {{ form.price_min }}€ et {{ form.price_max }}€</p>
+<p>Ville de départ : {{ form.city_d }} Ville d'arrivée {{ form.city_a }}</p>
+<p><label for="date">Départ le :</label> 
+<input type="text" value=""  name="date" size="18"  style="width:130px" class="date" onclick="displayCalendar(this,'yyyy-mm-dd',this,true)"/>
+<p>Je recherche un trajet quotidien {{ form.is_daily }}</p>
+<p>Je voyage lourd : {{ form.has_big_boot }}</p>
+<input type="submit" value="ok" />
+</form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+Passagers qui recherchent des conducteurs
+{% if routes_driver|length > 0 %}
+	{% for route in routes_driver %}
+		<p>
+		{{ route.city_d }} > {{ route.city_a }} |
+		{{ route.time }} | {{ route.nb_passengers }} pl.</p>
+	{% endfor %}
+{% endif %}
+
+Conducteurs qui recherchent des passagers
+{% if routes_passengers|length > 0 %}
+	{% for route in routes_passengers %}
+		<p>
+		{{ route.city_d }} > {{ route.city_a }} |
+		{{ route.time }} | {{ route.nb_passengers }} pl.</p>
+	{% endfor %}
+{% endif %}
+
+{% endblock content %}

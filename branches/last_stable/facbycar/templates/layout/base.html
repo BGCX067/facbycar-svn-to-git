@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />	
+	<meta name="Authors" content="" />
+	<meta name="Description" content="Site de covoiturage de l'universite de Marne la Vallee" />
+    <title>Fac By Car - Co-voiturage UMLV</title>    
+	
+	<link rel="image_src" href="{{ MEDIA_URL }}images/logo-fac-by-car.jpg" />
+	
+	<link rel="shortcut icon" type="image/x-icon" href="{{ MEDIA_URL }}images/favicon.ico">
+	
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" />  
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.6.custom.min.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/script.js"></script>
+	
+  </head>
+  <body>
+	<div id="container">
+		<div id="header">
+			<a id="link_logo" title="Fac By Car - Co-voiturage Université de Marne-la-Vallée" href="/" >
+				<span><h1>Fac By Car - Co-voiturage Université de Marne-la-Vallée</h1></span>
+			</a>
+
+			<div id="menu">
+				<ul>
+					<li><a href="/">Accueil</a></li>
+					<li><a href="/search/">Rechercher un trajet</a></li>
+					<li><a href="/add_route/">Ajouter un trajet</a></li>
+					<li><a href="/profile/">Espace personnel</a></li>
+				</ul>
+			</div>
+			
+			<div id="like_buttons">
+				<a title="Facebook - Fac by car" onclick="window.open(this.href,'sharer','toolbar=0,status=0,width=626,height=436'); return false;" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffacbycar.alwaysdata.net%2F&t=Fac_by_Car"><img src="../media/images/facebook-fac-by-car.jpg"/></a>
+                
+				<a title="Twitter - Fac by car" href="http://twitter.com/home?status=Le nouveau site de covoiturage étudiant est dispo http://facbycar.alwaysdata.net"><img src="../media/images/twitter-fac-by-car.jpg"/></a>
+                
+			</div>
+		</div>
+		
+		<div id="left">
+			<div id="registration">
+				{% if user.is_authenticated %}
+				<a id="btn_logout" title="Se déconnecter - Fac By Car - Co-voiturage UMLV" href="/logout/">Se déconnecter</a>
+				{% else %}
+				<a id="btn_registration" title="S'inscrire - Fac By Car - Co-voiturage UMLV" href="/register/">S'inscrire</a>
+				{% endif %}
+			</div>
+			<div id="form_login">
+				{% if user.is_authenticated %}
+				<div id="block_user_left">
+					<h2>Bonjour {{ user.username }}</h2>
+					<p><a class="route_block_user" href="/my_routes/">Mes trajets</a></p>
+					<p><a class="mess_block_user"  href="/messages/">Mes messages</a></p>
+					<br/>
+					<!--<p><a class="demand_block_user"  href="#">Demandes en attente</a></p>-->
+					
+					<a class="big_btn_white" href="/profile/">Mon espace personnel</a>
+				</div>
+				{% else %}
+				<form method="post" action="/login/" id="form_log">
+                	<p><label for="login">Login</label>
+                	<input type="text" name="username" id="username" size="18" /></p>
+                	<p><label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" size="18" /></p>
+                    <div id="link_login"><a href="#">Mot de passe oublié ?</a><br/><a href="/register/">Pas encore inscrit ?</a></div>
+                    <input type="submit" class="submit_login" value="Se connecter" />
+                </form>
+				{% endif %}
+			</div>
+			<div id="help">
+				<ul>
+					<li><a title="Foire aux Questions Fac by Car - Covoiturage UMLV" href="/faq/">FAQ</a></li>
+					<li><a title="Charte de bonne conduite Fac by Car - Covoiturage UMLV" href="/charte/">Charte de bonne conduite</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="right">
+			<div id="right_content">
+            
+				{% block content %}
+
+				{% endblock content %}
+				<div class="clear"></div>
+				
+			</div>				
+		
+			<div id="footer">
+				<a href="/charte/">Charte de bonne conduite</a> | <a href="/mentions_legales/">Mentions Légales</a> | <a href="/plan_du_site/">Plan du site</a> | <a href="/contact/">Contact</a>
+			</div>
+		</div>
+		<div class="clear"></div>	
+		
+			
+	</div>
+  </body>
+  </html>

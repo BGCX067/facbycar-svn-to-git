@@ -1,0 +1,5 @@
+
+Veuillez cliquer sur le lien ci dessous pour activer votre compte:<br/>
+http://{{ site.domain }}/activate/{{ activation_key }}
+
+

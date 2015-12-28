@@ -1,0 +1,93 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+ 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.6.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
+
+<h1>{{ route.city_d }} > {{ route.city_a }} <br/>le {{ route.date_departure }} à {{ route.hour|time:"H:i" }}</h1>
+
+<div id="block_route">
+	<div class="block_route_infos">
+		<h4>Départ :</h4>
+		<h3 id="cityd">{{ route.city_d }}</h3>
+		<p class="block_route_place" id="address">{{ route.place_d }}</p>
+		<h4>Arrivée :</h4>
+		<h3 id="citya" >{{ route.city_a }}</h3>
+		<p class="block_route_place" id="address2">{{ route.place_a }}</p>
+		
+		{% if route.is_driver == 1 %}
+			<p class="driver">Conducteur : <a href="/send_message/">{{ route.car.user }}</a></p>
+		{% else %}
+			<p class="passenger">Trajet en tant que passager</p>
+		{% endif %}
+		
+		<p >Distance : <span id="distance">...</span></p>
+		<p >Durée : <span id="duree">...</span></p>
+	</div>
+	<div class="block_route_date">
+		<h2>{{ route.date_departure|date:"d-m-Y" }}</h2>
+		<p>{{ route.hour|time:"H:i" }}</p>
+	</div>
+	
+	{% if route.is_driver == 1 %}
+		<div class="block_route_nb_passenger"><span>{{ route.nb_passengers }}</span> places disponibles</div>
+		<div class="block_route_price"><span>{{ route.price }} €</span> par passager</div>
+	{% else %}
+		<div class="block_route_required_price">Prix souhaité : <span>{{ route.price }} €</span> </div>
+	{% endif %}
+	<div class="clear"></div>
+	
+	{% if route.is_daily == 1 %}
+		<p class="block_route_daily_day"><span>Trajet quotidien </span></p>
+			{% if daily.date_mo != '' %}
+			<div class="block_route_day" title="{{ daily.date_mo }}">L</div> 
+			{% endif %}
+			{% if daily.date_tu != '' %}
+			<div class="block_route_day" title="{{ daily.date_tu }}">M</div> 
+			{% endif %}
+			{% if daily.date_we != '' %}
+			<div class="block_route_day" title="{{ daily.date_we }}">M</div> 
+			{% endif %}
+			{% if daily.date_th != '' %}
+			<div class="block_route_day" title="{{ daily.date_th }}">J</div> 
+			{% endif %}
+			{% if daily.date_fr != '' %}
+			<div class="block_route_day" title="{{ daily.date_fr }}">V</div> 
+			{% endif %}
+			{% if daily.date_sa != '' %}
+			<div class="block_route_day" title="{{ daily.date_sa }}">S</div> 
+			{% endif %}
+			{% if daily.date_su != '' %}
+			<div class="block_route_day" title="{{ daily.date_su }}">D</div> 
+			{% endif %}
+		<div class="clear"></div>
+		<p class="block_route_daily_day">jusqu'au <span>{{ daily.end_time }}</span></p>
+		<div class="clear"></div>
+	{% else %}
+		<p><strong>Trajet ponctuel</strong></p>
+	{% endif %}
+	
+	{% if route.is_driver == 1 %}
+	<div class="block_route_car">
+		<h4>Ma voiture : </h4>
+		<p>{{ route.car }}</p>
+		<div class="pict_block_car"><img src="{{ MEDIA_URL }}{{route.car.url_pic}}" alt="{{route.car.model}}" width="70px" height="70px" /></div>
+	</div>
+	{% endif %}
+</div>
+
+<div id="block_socialNetwork">
+	<a title="Facebook - Fac by car" onclick="window.open(this.href,'sharer','toolbar=0,status=0,width=626,height=436'); return false;" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffacbycar.alwaysdata.net%2Froute%2F?id={{ route.id }}&t=Fac_by_Car"><img src="../media/images/facebook-fac-by-car.jpg"/></a>
+    
+    <a title="Twitter - Fac by car" href="http://twitter.com/home?status=Ce trajet peut vous interesser http://facbycar.alwaysdata.net/route/?id={{ route.id }}"><img src="../media/images/twitter-fac-by-car.jpg"/></a>
+    
+</div>
+
+<div class="clear"> </div>
+<h2>Carte du trajet</h2>
+<div id="map_canvas" style="width:650px; height:300px"></div>
+
+
+{% endblock content %}

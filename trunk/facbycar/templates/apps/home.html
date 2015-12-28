@@ -1,0 +1,93 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/calendar.css?random=20051112" type="text/css" media="screen" /> 
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/calendar.js?random=20060118"></script>
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.6.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/aucompleteCity.js"></script>
+
+	<h1>Rechercher un trajet</h1>
+	<form method="post" action="/basic_search/" id="form_search">
+		<div><label for="city_d">Ville de départ</label>
+		<input type="text" name="city_d" id="city_d" size="18" /></div>
+		
+        <div><label for="city_a">Ville d'arrivée</label>
+		<input type="text" name="city_a" id="city_a" size="18" /></div>
+		
+        <div><label for="date">Date</label>
+            <input type="text" value=""  name="date" size="18"  style="width:130px" class="date" onclick="displayCalendar(this,'yyyy-mm-dd',this,true)"/>
+        </div>
+        
+		<input type="submit" class="submit_search" value="Rechercher" />
+      
+	</form>
+
+	<h1>Les plus du co-voiturage</h1>
+	<div class="block_home">
+		<img alt="Co-voiturage écologique Fac By Car" src="/media/images/co-voiturage-ecologique-umlv.jpg"/>
+		<h2>Ecologique</h2>
+		<p>Faîtes un geste écolo</p>
+	</div>
+	<div class="block_home">
+		<img alt="Co-voiturage écologique Fac By Car" src="/media/images/co-voiturage-economique-umlv.jpg"/>
+		<h2>Economique</h2>
+		<p>Partagez vos frais de déplacement</p>
+	</div>
+	<div class="block_home rencontres">
+		<img alt="Co-voiturage écologique Fac By Car" src="/media/images/co-voiturage-rencontres-umlv.jpg"/>
+		<h2>Rencontres</h2>
+		<p>Rencontrez des étudiants de votre campus</p>
+	</div>
+	
+	
+	<div id="last_route">
+		<h1>Derniers trajets</h1>
+		{% for route in last_routes %}
+			{% if route.is_driver == 1 %} 
+				{% if route.is_daily == 1 %} 
+				<p class="driver"><a title="Co-voiturage : {{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}<br/><span>Du {{ route.date_departure }} au {{ route.date_daily.end_time }} | {{ route.nb_passengers }} pl.</span></a></p>
+				{% else %} 
+				<p class="driver"><a title="Co-voiturage : {{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}<br/><span>Le {{ route.date_departure }} à {{ route.hour|time:"H:i" }} | {{ route.nb_passengers }} pl.</span></a></p>
+				{% endif %}
+			{% else %} 
+				{% if route.is_daily == 1 %} 
+				<p class="passenger"><a title="Co-voiturage : {{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}<br/><span>Du {{ route.date_departure }} au {{ route.date_daily.end_time }} | {{ route.nb_passengers }} pl.</span></a></p>
+				{% else %} 
+				<p class="passenger"><a title="Co-voiturage : {{ route.city_d }} > {{ route.city_a }}" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}<br/><span>Le {{ route.date_departure }} à {{ route.hour|time:"H:i" }} | {{ route.nb_passengers }} pl.</span></a></p>
+				{% endif %}
+			{% endif %} 
+		{% endfor %}
+	</div>
+	
+	<div id="last_minute_route">
+		<h1>Trajets de dernière minute</h1>
+		{% for routes2_daily in last_routes2_daily %}
+			{% if routes2_daily.is_driver == 1 %} 	 
+				<p class="driver"><a title="Co-voiturage : {{ routes2_daily.city_d }} > {{ routes2_daily.city_a }}" href="/route/?id={{ routes2_daily.id }}">{{ routes2_daily.city_d }} > {{ routes2_daily.city_a }}<br/><span>Du {{ routes2_daily.date_departure }} au {{ routes2_daily.date_daily.end_time }} | {{ routes2_daily.nb_passengers }} pl.</span></a></p>
+			{% else %} 
+				<p class="passenger"><a title="Co-voiturage : {{ routes2_daily.city_d }} > {{ routes2_daily.city_a }}" href="/route/?id={{ routes2_daily.id }}">{{ routes2_daily.city_d }} > {{ routes2_daily.city_a }}<br/><span>Du {{ routes2_daily.date_departure }} au {{ routes2_daily.date_daily.end_time }} | {{ routes2_daily.nb_passengers }} pl.</span></a></p>
+			{% endif %} 
+		{% endfor %}
+		{% for route2 in last_routes2 %}
+			{% if route2.is_driver == 1 %} 
+				{% if route2.is_daily == 1 %} 
+				<p class="driver"><a title="Co-voiturage : {{ route2.city_d }} > {{ route2.city_a }}" href="/route/?id={{ route2.id }}">{{ route2.city_d }} > {{ route2.city_a }}<br/><span>Du {{ route2.date_departure }} au {{ route2.date_daily.end_time }} | {{ route2.nb_passengers }} pl.</span></a></p>
+				{% else %} 
+				<p class="driver"><a title="Co-voiturage : {{ route2.city_d }} > {{ route2.city_a }}" href="/route/?id={{ route2.id }}">{{ route2.city_d }} > {{ route2.city_a }}<br/><span>Le {{ route2.date_departure }} à {{ route2.hour|time:"H:i" }} | {{ route2.nb_passengers }} pl.</span></a></p>
+				{% endif %}
+			{% else %} 
+				{% if route2.is_daily == 1 %} 
+				<p class="passenger"><a title="Co-voiturage : {{ route2.city_d }} > {{ route2.city_a }}" href="/route/?id={{ route2.id }}">{{ route2.city_d }} > {{ route2.city_a }}<br/><span>Du {{ route2.date_departure }} au {{ route2.date_daily.end_time }} | {{ route2.nb_passengers }} pl.</span></a></p>
+				{% else %} 
+				<p class="passenger"><a title="Co-voiturage : {{ route2.city_d }} > {{ route2.city_a }}" href="/route/?id={{ route2.id }}">{{ route2.city_d }} > {{ route2.city_a }}<br/><span>Le {{ route2.date_departure }} à {{ route2.hour|time:"H:i" }} | {{ route2.nb_passengers }} pl.</span></a></p>
+				{% endif %}
+			{% endif %} 
+		{% endfor %}
+		
+	</div>
+    
+
+	<div id="map_canvas" style="width:0; height:0px; visibility:hidden"></div>
+{% endblock content %}

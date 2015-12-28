@@ -1,0 +1,36 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Contact</h1>
+
+<p>Fac by car met à votre disposition un support utilisateur 24h/24. En remplissant le formulaire, l'utilisateur a alors la possibilité de :</p>
+
+<ul>
+	<li>Signaler une anomalie de fonctionnement.</li>
+	<li>Procéder à une réclamation.</li>
+	<li>Poser toute question.</li>
+	<li>Emettre un avis ou proposer une amélioration sur le site.</li>
+</ul>
+
+
+
+<form action="{{ form_action }}" method="post" id="contact_form">
+<!--{{ form.as_p }}-->
+	<div class="fieldWrapper"> 
+		<p><label>Email <span class="required">*</span> :</label> {{ form.sender }}
+		{% for error in form.sender.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>	
+	</div>
+	<div class="fieldWrapper"> 
+		<p><label>Sujet <span class="required">*</span> :</label> {{ form.subject }}
+		{% for error in form.subject.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>	
+	</div>
+	<div class="fieldWrapper"> 
+		<p><label>Message <span class="required">*</span> :</label> {{ form.message }}
+		{% for error in form.message.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>	
+	</div>
+	
+	<p class="p_required">* Champs obligatoires</p>
+	<input type="submit" class="submit_search" value="Envoyer" />
+</form>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<!--<h1>{{message.subject}}</h1>-->
+
+<div id="user_search_results">
+
+ {% if contacts %}
+
+  {% for user in contacts %}
+		<a class="user"href="/user_profile/?u={{ user.user_id }}"> {{ user.username|escape }} </a> <br/>
+  {% endfor %}
+
+{% else %}
+  <p>Vous n'avez pas de contacts</p>
+{% endif %}
+
+
+</div>
+{% endblock content %}

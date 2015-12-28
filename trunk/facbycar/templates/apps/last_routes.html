@@ -1,0 +1,65 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1><span>Résultat de votre recherche :</span>
+{% if routes_added|length > 0 %}
+	{% if routes_added|length > 1 %}
+		{{ routes_added|length }} trajets trouvés.</h1>
+	{% else %}
+		{{ routes_added|length }} trajet trouvé</h1>
+	{% endif %}
+		{% for route in routes_added %}
+		<div class="result">
+			<div class="route_search">			
+				<div class="infos_route_search bckg_grey">
+					<h3><a title="Fiche trajet {{ route.city_d }} > {{ route.city_a }} - fac by car" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}</a></h3>
+					<p>le <span>{{ route.date_departure }}</span> à <span>{{ route.hour }}</span></p>
+				</div>
+				<div class="nb_place_search bckg_grey">
+					<p><span>{{ route.nb_passengers }}</span> places disponibles</p>
+				</div>
+				<div class="price_search bckg_grey">
+					<p><span>{{ route.price }} €</span> par passager</p>
+				</div>
+				<div class="clear"></div>
+				<a class="little_btn" title="Fiche trajet {{ route.city_d }} > {{ route.city_a }} - fac by car " href="/route/?id={{ route.id }}">Fiche trajet</a>
+				<a class="big_btn" title="Participer au trajet" href="#">Participer au trajet</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		{% endfor %}
+	{% else %}
+		Aucun trajet correspondant :( !</h1>
+{% endif %}
+{% if routes_togo|length > 0 %}
+	{% if routes_togo|length > 1 %}
+		{{ routes_togo|length }} trajets trouvés.</h1>
+	{% else %}
+		{{ routes_togo|length }} trajet trouvé</h1>
+	{% endif %}
+		{% for route in routes_togo %}
+		<div class="result">
+			<div class="route_search">			
+				<div class="infos_route_search bckg_grey">
+					<h3><a title="Fiche trajet {{ route.city_d }} > {{ route.city_a }} - fac by car" href="/route/?id={{ route.id }}">{{ route.city_d }} > {{ route.city_a }}</a></h3>
+					<p>le <span>{{ route.date_departure }}</span> à <span>{{ route.hour }}</span></p>
+				</div>
+				<div class="nb_place_search bckg_grey">
+					<p><span>{{ route.nb_passengers }}</span> places disponibles</p>
+				</div>
+				<div class="price_search bckg_grey">
+					<p><span>{{ route.price }} €</span> par passager</p>
+				</div>
+				<div class="clear"></div>
+				<a class="little_btn" title="Fiche trajet {{ route.city_d }} > {{ route.city_a }} - fac by car " href="/route/?id={{ route.id }}">Fiche trajet</a>
+				<a class="big_btn" title="Participer au trajet" href="#">Participer au trajet</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		{% endfor %}
+	{% else %}
+		Aucun trajet correspondant :( !</h1>
+{% endif %}
+{% endblock content %}

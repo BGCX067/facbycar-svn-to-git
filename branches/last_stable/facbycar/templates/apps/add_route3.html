@@ -1,0 +1,45 @@
+﻿{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Ajouter un trajet</h1>
+<img alt="Fac by car - Co-voiturage Université de Marne-la-vallée" src="{{ MEDIA_URL }}/images/ajout-trajet-co-voiturage-3.jpg"/>
+
+<form action={{ form_action }} method="post" id="form_route3">
+	{% if driver == 1 %}
+		<h2>Préférence</h2>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.car.label }} : </label> {{ form.car }}
+			{% for error in form.car.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.nb_passengers.label }} : </label> {{ form.nb_passengers }}
+			{% for error in form.nb_passengers.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		<div class="fieldWrapper"> 
+			<p>{{ form.has_big_boot }} <label>{{ form.has_big_boot.label }} </label>  
+			{% for error in form.has_big_boot.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		
+		<h2>Tarif</h2>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.price.label }}  : </label> {{ form.price }} €
+			{% for error in form.price.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div> 
+	{% else %}
+		<h2>Préférence</h2>
+		<div class="fieldWrapper"> 
+			<p>{{ form.has_big_boot }} <label>{{ form.has_big_boot.label }} </label>  
+			{% for error in form.has_big_boot.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div>
+		
+		<h2>Tarif</h2>
+		<div class="fieldWrapper"> 
+			<p><label>{{ form.price.label }}  : </label> {{ form.price }} €
+			{% for error in form.price.errors %}<span class="error">{{ error }}</span>{% endfor %}</p>
+		</div> 
+	{% endif %}
+	<p class="submit"><input type="submit" class="submit_search" value="Enregistrer" /><p>
+</form>
+
+
+{% endblock content %}
